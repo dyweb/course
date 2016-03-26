@@ -5,6 +5,9 @@ Dongyue Web Studio course and lecture
 
 ## How to write doc
 
+- have `python` and `pip` installed. [python](https://www.python.org/)
+- `pip install sphinx sphinx-autobuild` to install sphinx
+- `pip install recommonmark` to install markdown support
 - use `md` or `rst` file
 - run `make html` to build html
 
