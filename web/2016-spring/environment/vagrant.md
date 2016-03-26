@@ -1,6 +1,6 @@
 # Vagrant 
 
-## Vagrant VS Virtual machine VS Docker
+## Vagrant vs Virtual machine vs Docker
 
 TODO:
 

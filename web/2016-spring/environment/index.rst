@@ -13,3 +13,7 @@ Contents:
    editor
    cmd
    virtual
+   vagrant
+   linux
+   nginx
+   php
