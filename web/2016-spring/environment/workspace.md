@@ -2,7 +2,7 @@
 
 How to orgnaize all your projects
 
-## Where is the problem
+## Problems
 
 **tl;dr**
 
@@ -133,7 +133,7 @@ D:/Code/
          -- tongqu-web
 ````
 
-the workspace for at15
+the workspace for at15. the editor is [VSCode](https://code.visualstudio.com/)
 
 ![at15-workspace](images/at15-workspace.PNG)
 
