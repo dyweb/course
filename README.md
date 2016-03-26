@@ -1,7 +1,7 @@
 # README
 Dongyue Web Studio course and lecture 
 
-- [Online](http://course.readthedocs.org/en/latest/)
+- [View it Online](http://course.readthedocs.org/en/latest/)
 
 ## How to write doc
 
