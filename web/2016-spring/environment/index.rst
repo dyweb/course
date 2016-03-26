@@ -10,3 +10,5 @@ Contents:
    
    workspace
    editor
+   cmd
+   virtual
