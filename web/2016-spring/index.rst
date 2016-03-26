@@ -1,4 +1,4 @@
-2016-spring
+2016 Spring
 ====================================
 
 Courses for 2016 Spring, the last semester in Rotunda
