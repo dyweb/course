@@ -1,8 +1,10 @@
 # Vagrant 
 
-## Vagrant vs Virtual machine vs Docker
+[Official site](https://www.vagrantup.com/)
 
-TODO:
+> Create and configure lightweight, reproducible, and portable develop environment.
+
+## Vagrant vs Virtual machine vs Docker
 
 - vagrant is more friendly for development
 - you should not package everthing in one docker image
@@ -33,3 +35,12 @@ TODO: don't need to go into detail of ssh right away ...
 ### vagrant destroy
 
 ### vagrant 
+
+## Use the lnmp box
+
+[at15/lnmp](https://github.com/at15/lnmp) is a prconfiged box for LNMP stack.
+
+````
+vagrant box init at15/lnmp
+vagrant up
+````
