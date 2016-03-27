@@ -44,3 +44,7 @@ TODO: don't need to go into detail of ssh right away ...
 vagrant box init at15/lnmp
 vagrant up
 ````
+
+## FAQ
+
+TODO: time out (ssh), VT-X 
