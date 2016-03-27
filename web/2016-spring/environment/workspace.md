@@ -137,7 +137,7 @@ the workspace for at15. the editor is [VSCode](https://code.visualstudio.com/)
 
 ![at15-workspace](images/at15-workspace.PNG)
 
-## Ref
+## Reference
 
 - [Git](https://git-scm.com/)
 - [GitHub](https://github.com)
