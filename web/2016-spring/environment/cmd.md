@@ -28,15 +28,27 @@ tl;dw
 
 - list folders `dir`
 
-
 ## Concepts
 
-### 
+### Executeable
 
-TODO:
+- binary TODO: vagrant, a c example. (windows: exe, linux: executeable)
+- script TODO: a bat example, a python example.
 
-- run a application TODO: commandline application that exists in all windows syste .... ipconfig?
-- command line arguments
-- take vagrant as example
-- git bash
-- a c application example (or java ?....) put it in vagrant box maybe....
+### Arguments
+
+- a php example
+
+### Current folder
+
+### PATH
+
+- windows config
+- linux config
+
+how to use it.
+
+### Environment variables
+
+- windows config
+- linux config

@@ -83,7 +83,7 @@ Integrated Development Environment. Editor + Code runner + Debugger .... etc.
 
 - [official site](https://www.jetbrains.com/)
 
-** Student can have free liciense **
+**[Student can have free liciense](https://www.jetbrains.com/student/)**
 
 - [WebStorm](https://www.jetbrains.com/webstorm) Front end 
 - **[PhpStorm](https://www.jetbrains.com/phpstorm/)** Front end + PHP
@@ -131,7 +131,10 @@ with C# if you have Visual Studio installed.
 - [Sublime](https://www.sublimetext.com/)
 - [VSCode](https://code.visualstudio.com/)
 
-## Well-known but not recommended
+## Not recommended
+
+They are well known editors, but since using them require a lot of config, it's better to use editor or IDE that comes
+out with a lot of default settings and plugins. 
 
 - Vim
 - Emacs
