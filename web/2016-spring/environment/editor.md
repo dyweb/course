@@ -134,8 +134,13 @@ with C# if you have Visual Studio installed.
 ## Not recommended
 
 They are well known editors, but since using them require a lot of config, it's better to use editor or IDE that comes
-out with a lot of default settings and plugins. 
+out with a lot of default settings and plugins. You can try if you think you can handle them.
 
 - Vim
 - Emacs
-- Notepad++
+
+## Outdated editor and IDE
+
+If you want to waste time, try one of the following. If you want to waste other people's time, recommend those to them.
+
+- Dreamweaver

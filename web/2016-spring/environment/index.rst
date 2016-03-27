@@ -14,6 +14,7 @@ Contents:
    cmd
    virtual
    vagrant
+   request
    linux
    nginx
    php
