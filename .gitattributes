@@ -1,0 +1,4 @@
+# Force sh file use lf
+*.sh text eol=lf
+Makefile text eol=lf
+*.bat text eol=crlf
