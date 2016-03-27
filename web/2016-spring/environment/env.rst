@@ -1,7 +1,8 @@
 Environment
 ===========
 
-You write and run your code on certain machine. see refernece for formal explaination.
+You write and run your code on certain machine. It contains two parts, your code, and the execution environment of your code. Like your `index.php` and the `LNMP`
+stack. see refernece for formal explaination.
 
 
 * **local**: your laptop, PC.
@@ -67,13 +68,6 @@ Complex: Develop -> Test -> QA -> Part of Production -> Production
 
 tl;dw
 
-Local Develop Environment 
--------------------------
-
-* :doc:`workspace`
-
-... cmd, editor, virtual machine, vagrant ....  
-
 How to setup a unfamiliar environment
 -------------------------------------
 
@@ -84,6 +78,8 @@ How to setup a unfamiliar environment
 * Read blogs
 * Ask others
 * Give up and use docker
+
+this kind of work is inclued in a position called `Dev Ops`_
 
 Future of Develop Environment
 -----------------------------
@@ -98,3 +94,4 @@ Reference
 * `Wiki Deploy Environment`_ 
 
 .. _Wiki Deploy Environment: https://en.wikipedia.org/wiki/Deployment_environment
+.. _Dev Ops: https://en.wikipedia.org/wiki/DevOps
