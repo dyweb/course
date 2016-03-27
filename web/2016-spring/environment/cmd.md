@@ -26,15 +26,15 @@ tl;dw
 
 ![win_cmd_hello](images/win_cmd_hello.PNG)
 
+- list folders `dir`
+
+
 ## Concepts
 
 ### 
 
 TODO:
 
-- ref documentation in docker
-- open cmd in windows
-- use command in windows
 - run a application TODO: commandline application that exists in all windows syste .... ipconfig?
 - command line arguments
 - take vagrant as example
