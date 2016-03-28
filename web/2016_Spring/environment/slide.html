@@ -1,0 +1,628 @@
+<html>
+<head>
+    <title>2016 Spring Web develop environment setup by at15</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="at15">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css"
+          id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script>alert('Please use Chrome');</script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <!-- Landing page -->
+        <section data-background="images/space.png">
+            <h2>Web develop environment setup</h2>
+            <h4>2016 Spring Dongyue Web Studio</h4>
+            <p>
+                <small>by <a href="https://github.com/at15" target="_blank">at15</a></small>
+            </p>
+        </section>
+
+        <!--Contents TODO: link to other sections-->
+        <section>
+            <h3>Contents</h3>
+            <ul>
+                <li>What is environment</li>
+                <li>Use Vagrant</li>
+                <li>Setup local workspace</li>
+                <li>Request lifecycle</li>
+                <li>PHP examples</li>
+            </ul>
+        </section>
+
+        <!-- Start of environment -->
+        <section>
+            <section>
+                <h2>Environment</h2>
+                <p>Where your code runs</p>
+                <ul>
+                    <li>your laptop</li>
+                    <li>bare metal server</li>
+                    <li>server in cloud</li>
+                </ul>
+            </section>
+
+            <section>
+                By location
+                <h2>Local and remote</h2>
+
+                <div class="fragment">
+                    <h4>Local:</h4>
+                    <p>You have full physical control, the computer you use in your daily life.</p>
+                </div>
+
+                <div class="fragment">
+                    <h4>Remote:</h4>
+                    <p>Your bare metal server hosted in <a href="https://en.wikipedia.org/wiki/Data_center"
+                                                           target="_blank">IDC</a>,
+                        virtual server you bought from <a href="https://www.aliyun.com" target="_blank">aliyun</a>,
+                        <a href="https://aws.amazon.com" target="_blank">amazon</a>.</p>
+                </div>
+            </section>
+
+            <section>
+                By functionality
+                <h2>Develop and Production</h2>
+
+                <div class="fragment">
+                    <h4>Develop:</h4>
+                    <p>You write code and run everything on your own laptop.</p>
+                </div>
+
+                <div class="fragment">
+                    <h4>Production:</h4>
+                    <p>Customers use your application, your code runs on remote server.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>What we have</h2>
+                <ul>
+                    <li>Local develop environment</li>
+                    <li>Remote develop environment</li>
+                    <li>Local production environment</li>
+                    <li>Remote production environment</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Local develop environment</h2>
+                <ul>
+                    <li>Your code</li>
+                    <li>Application and runtime to run your code</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Common problems</h2>
+                <ul>
+                    <li>Code is a mess</li>
+                    <li>Bug only occurs in production</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Solutions</h2>
+                <ul>
+                    <li>Use version control and organize your projects</li>
+                    <li>Have a unified environment setup</li>
+                </ul>
+            </section>
+        </section>
+        <!-- End of environment -->
+
+        <!-- Start of vagrant -->
+        <section>
+            <section data-background="images/vagrant_bg.png">
+                <h2>Vagrant</h2>
+                <p>A unified develop environment</p>
+                <p><i>Create and configure lightweight, reproducible, and portable develop environment.</i></p>
+                <a href="https://www.vagrantup.com/" target="_blank">offical site</a>
+            </section>
+
+            <section>
+                <p>Vagrant = virtual machine + config tools</p>
+            </section>
+
+            <section>
+                <p>Virtual Machine</p>
+                <img src="images/inception.jpg" alt="vm in vm" style="height: 80%">
+            </section>
+
+            <section>
+                <p>Virtual Machine</p>
+                <ul>
+                    <li>Vmware</li>
+                    <li>Virtual box</li>
+                    <li>Xen</li>
+                </ul>
+            </section>
+
+            <section>
+                <p><a href="http://www.vmware.com/" target="_blank">Vmware</a></p>
+                <ul>
+                    <li>Personal + Company</li>
+                    <li>Commercial + Cloud</li>
+                </ul>
+                <img src="images/vmware_ub_server.PNG" alt="vmware_screenshot" style="height:70%">
+            </section>
+
+            <section>
+                <p><a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a></p>
+                <ul>
+                    <li>Personal + Company</li>
+                    <li>OpenSource (GNU)</li>
+                </ul>
+                <img src="images/virtualbox_xp.PNG" alt="vbox_screenshot" style="height:70%">
+            </section>
+
+            <section>
+                <p><a href="http://www.xenproject.org/">Xen</a></p>
+                <p><i>
+                    The Xen Project is the leading open source virtualization platform that is powering
+                    some of the largest clouds in production today.
+                    <strong>Amazon Web Services, Aliyun, Rackspace Public Cloud, Verizon Cloud</strong> and many hosting
+                    services use
+                    Xen Project software.
+                    Plus, it is integrated into multiple cloud orchestration projects like <strong>OpenStack</strong>.
+                </i></p>
+            </section>
+
+            <section>
+                <p>Problems for using Virtual Machine</p>
+                <ul>
+                    <li>GUI is not necessary and slow</li>
+                    <li>Can't use host editor</li>
+                    <li>Config is a pain</li>
+                    <li>Config is not portable</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Vagrant Essentials</p>
+                <ul>
+                    <li>Vagrantfile</li>
+                    <li>base image</li>
+                    <li>share folder</li>
+                    <li>port mapping</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Vagrantfile</p>
+                <pre style="font-size: .45em">
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  # the base box is ubuntu 14.04 LTS
+  config.vm.box = "ubuntu/trusty64"
+
+  # need to check update
+  config.vm.box_check_update = true
+
+  # forward guest 80 to host 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Use 777 for the default mount folder. which works for Ubuntu and Mac, windows always got 777
+  config.vm.synced_folder ".", "/vagrant", \
+    :disabled => false, \
+    :mount_options  => ['dmode=777,fmode=777']
+
+  config.vm.provider "virtualbox" do |vb|
+     # Don't show the GUI unless you have some bug
+     vb.gui = false
+     # Customize the amount of memory on the VM:
+     vb.memory = "1024"
+     # Config the name
+     vb.name = "at15-lnmp"
+  end
+end
+                </pre>
+            </section>
+
+            <section>
+                <p>Vagrant base box (image) </p>
+                <ul>
+                    <li>Ubuntu 14.04 LTS&nbsp;&nbsp;<i>ubuntu/trusty64</i></li>
+                    <li><a href="https://github.com/at15/lnmp" target="_blank">LNMP Ubuntu
+                        14.04&nbsp;&nbsp;<i>at15/lnmp</i></a></li>
+                    <li><a href="https://github.com/LukeXuan/atlas-centos7" target="_blank">LNMP CentOS&nbsp;&nbsp;<i>lukexuan/centos7</i></a>
+                    </li>
+                    <li><a href="https://atlas.hashicorp.com/boxes/search" target="_blank">Discover for yourself</a>
+                    </li>
+                </ul>
+                <p>
+                    <i>vagrant init ubuntu/trusty64</i>
+                </p>
+            </section>
+
+            <section>
+                <p>Vagrant share folder</p>
+                <p>mount Vagrantfile folder to /vagrant by default</p>
+                <img src="images/vagrant_share.PNG" alt="share">
+                <p>bi-direction</p>
+            </section>
+
+            <section>
+                <p>Vagrant port mapping</p>
+                <p>use Vagrant file</p>
+                <pre>
+  # forward guest 80 to host 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+                </pre>
+                <img src="images/vagrant_port_mapping.PNG" alt="vagrant port mapping" style="height: 60%">
+            </section>
+
+            <section>
+                <p>Vagrant commands</p>
+                <ul>
+                    <li>vagrant init &lt;box-name&gt;</li>
+                    <li>vagrant up</li>
+                    <li>vagrant ssh</li>
+                    <li>vagrant halt</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Vagrant commands</p>
+                <ul>
+                    <li>vagrant reload</li>
+                    <li>vagrant destroy</li>
+                    <li>vagrant package</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>FAQ</p>
+                <ul>
+                    <li>[Win] retry, connection time out -> enable VT-X</li>
+                    <li>[Win] vagrant ssh failed -> use Git Bash / Putty</li>
+                    <li>[Ubuntu] can't start after kernel update -> recompile vbox</li>
+                </ul>
+            </section>
+        </section>
+        <!-- End of vagrant -->
+
+        <!-- Start of workspace -->
+        <section>
+            <section>
+                <h2>Workspace</h2>
+                <p>Organize your code</p>
+            </section>
+
+            <section>
+                <p>Bad example</p>
+                <img src="images/mess-folders.PNG" alt="mess folder" style="height:80%">
+            </section>
+
+            <section>
+                <p>Problems</p>
+                <ul>
+                    <li>various source, ie: homework, project, OpenSource</li>
+                    <li>name collision, ie: fork</li>
+                    <li>too many projects, ie: <a href="https://github.com/gaocegege" target="_blank">gaocegege</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Solutions</p>
+                <ul>
+                    <li>use nested folders</li>
+                    <li>organize by git host, <a href="https://golang.org/doc/code.html">the Go way</a></li>
+                </ul>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ## Nested folder
+
+                    ````
+                    D:/Code/
+                    -- homework
+                    -- 2016-Spring
+                    -- environment
+                    -- lab
+                    -- cit
+                    -- distributed-monitoring
+                    -- cat
+                    -- wangwangwang
+                    -- eclipse
+                    -- che
+                    -- flux
+                    -- che
+                    -- good-man
+                    -- ex
+                    -- python-final
+                    -- goodess-bf-1
+                    -- goodess-ex-bf
+                    -- master-thesis
+                    ````
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ## The Go Way
+
+                    ````
+                    D:/workspace/src/
+                    -- github.com
+                    -- at15
+                    -- crawler
+                    -- how-to-play-tennis
+                    -- gaocegege
+                    -- scrala
+                    -- how-to-dig-holes
+                    -- git.tongqu.me
+                    -- tongqu
+                    -- tongqu5
+                    -- tongqu-api
+                    -- tongqu-web
+                    ````
+                    [Workspace setup in Golang](https://golang.org/doc/code.html)
+                </script>
+            </section>
+
+            <section>
+                <p>The one fits you is the best for you</p>
+            </section>
+        </section>
+        <!-- End of workspace -->
+
+        <!-- Start of request lifecycle -->
+        <section>
+            <section>
+                <h2>Request lifecycle</h2>
+                <p>What happens when you type google.com in your browser and press enter?</p>
+            </section>
+
+            <section>
+                <img src="images/chrome_google.PNG" alt="chrome google" style="height: 90%">
+            </section>
+
+            <!--FIXME: should not use tongqu as cdn /w\ -->
+            <section data-background-video="http://tongqu.me/upload/editor/video/20160328/1459154088473778.mp4">
+
+            </section>
+
+            <section>
+                <p>
+                    The original video is on
+                    <a href="https://vimeo.com/160582529" target="_blank">vimeo</a>.
+                    It has omit a lot important procedures due to time limit.
+                </p>
+            </section>
+
+            <section>
+                <h3>Request</h3>
+                <ul>
+                    <li>Browser</li>
+                    <li>Server</li>
+                    <li>Application Server</li>
+                </ul>
+                <h3>Response</h3>
+                <ul>
+                    <li>Application Server</li>
+                    <li>Server</li>
+                    <li>Browser</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Browser</h3>
+                <p>Make HTTP request to the server</p>
+                <img src="images/tongqu_browser.PNG" alt="tongqu browser" style="height: 70%">
+            </section>
+
+            <section>
+                <h3>Server</h3>
+                <p>Serve static file, route, proxy the request to Application server</p>
+                <ul>
+                    <li>Apache, the A in LAMP</li>
+                    <li>Nginx, the N in LNMP</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Application Server</h3>
+                <p>Handle business logic, like user login.</p>
+                <ul>
+                    <li>PHP, php-fpm</li>
+                    <li>Java, Jetty, Tomcat -> servlet</li>
+                    <li>Ruby, Unicorn, Puma -> Rake</li>
+                    <li>Python, WSGI</li>
+                    <li>cgi ... etc</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>LNMP,LAMP</h3>
+                <p>The famous web development stack</p>
+                <ul>
+                    <li>L -> Linux</li>
+                    <li>N, A -> Nginx, Apache</li>
+                    <li>M -> MySQL</li>
+                    <li>P -> PHP (Python, Perl :)</li>
+                </ul>
+                <p>Free, Easy to learn and use</p>
+            </section>
+
+            <section>
+                <h3>Static, Dynamic?</h3>
+                TODO: what is static page, what is dynamic page
+            </section>
+
+        </section>
+        <!-- End of request lifecycle -->
+
+        <!-- Start of PHP -->
+        <section>
+            <section>
+                <h2>PHP</h2>
+                <p>The best programming language in the world /w\</p>
+            </section>
+
+            <section>
+                <h2>Why PHP</h2>
+                <p>Easy to use, easy to learn</p>
+            </section>
+
+            <section>
+                <h2>Command line</h2>
+                <p>Hello world</p>
+                <pre>
+&lt;?php
+
+echo 'I am ' . $argv[0] . PHP_EOL;
+
+if ( $argc > 1 ) {
+   echo 'Hello ' . $argv[1];
+}else{
+   echo 'Hello /w\\';
+}
+
+echo PHP_EOL;
+
+                </pre>
+            </section>
+
+            <section>
+                <h2>Web application</h2>
+                <p>Hello world</p>
+                <i>http://vagrant.lk:8080/index.php</i>
+                <pre>
+&lt;?php
+$name = '/w\\';
+
+if(isset($_GET['name'])){
+    $name = $_GET['name'];
+}
+
+echo "Hello {$name}";
+                </pre>
+            </section>
+        </section>
+        <!--End of PHP -->
+
+        <!-- Start of homework -->
+        <section>
+            <section>
+                <h2>Homework</h2>
+            </section>
+
+            <section>
+                <h3>no homework</h3>
+                <div class="fragment">
+                    <p>I am kidding ... </p>
+                </div>
+            </section>
+
+            <section>
+                <h3>Homework</h3>
+                <p>see the <a href="http://dyweb.github.io/course/web/2016_Spring/environment/index.html">website</a> for full list</p>
+                <ul>
+                    <li>Read the documentation</li>
+                    <li>Setup your own workspace</li>
+                    <li>Write some PHP</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Have questions?</p>
+                <ul>
+                    <li>Ask on <a href="https://qa.dongyue.io">qa</a></li>
+                    <li>Open issue on <a href="https://github.com/dyweb/course">GitHub dyweb/course</a></li>
+                    <li>Come to Rotunda, office hour (Xbox hour): Mon-Fri, 10:00 - 17:00 </li>
+                </ul>
+            </section>
+
+        </section>
+        <!-- End of homework -->
+
+        <!-- Start of acknowledgement -->
+        <section>
+            <h2>Acknowledgement</h2>
+            <p>tl;dw</p>
+        </section>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js', async: true},
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js', async: true}
+        ]
+    });
+</script>
+</body>
+</html>
