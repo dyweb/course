@@ -183,6 +183,125 @@
                 </ul>
                 <img src="images/virtualbox_xp.PNG" alt="vbox_screenshot" style="height:70%">
             </section>
+            
+            <section>
+                <p><a href="http://www.xenproject.org/">Xen</a></p>
+                <p><i>
+                    The Xen Project is the leading open source virtualization platform that is powering
+                    some of the largest clouds in production today.
+                    <strong>Amazon Web Services, Aliyun, Rackspace Public Cloud, Verizon Cloud</strong> and many hosting services use
+                    Xen Project software.
+                    Plus, it is integrated into multiple cloud orchestration projects like <strong>OpenStack</strong>.
+                </i></p>
+            </section>
+
+            <section>
+                <p>Problems for using Virtual Machine</p>
+                <ul>
+                    <li>GUI is not necessary and slow</li>
+                    <li>Can't use host editor</li>
+                    <li>Config is a pain</li>
+                    <li>Config is not portable</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Vagrant</p>
+                <ul>
+                    <li>Vagrantfile</li>
+                    <li>base image</li>
+                    <li>share folder</li>
+                    <li>port mapping</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Vagrantfile</p>
+                <pre style="font-size: .45em">
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  # the base box is ubuntu 14.04 LTS
+  config.vm.box = "ubuntu/trusty64"
+
+  # need to check update
+  config.vm.box_check_update = true
+
+  # forward guest 80 to host 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Use 777 for the default mount folder. which works for Ubuntu and Mac, windows always got 777
+  config.vm.synced_folder ".", "/vagrant", \
+    :disabled => false, \
+    :mount_options  => ['dmode=777,fmode=777']
+
+  config.vm.provider "virtualbox" do |vb|
+     # Don't show the GUI unless you have some bug
+     vb.gui = false
+     # Customize the amount of memory on the VM:
+     vb.memory = "1024"
+     # Config the name
+     vb.name = "at15-lnmp"
+  end
+end
+                </pre>
+            </section>
+
+            <section>
+                <p>Vagrant base box (image) </p>
+                <ul>
+                    <li>Ubuntu 14.04 LTS&nbsp;&nbsp;<i>ubuntu/trusty64</i></li>
+                    <li><a href="https://github.com/at15/lnmp" target="_blank">LNMP Ubuntu 14.04&nbsp;&nbsp;<i>at15/lnmp</i></a></li>
+                    <li><a href="https://github.com/LukeXuan/atlas-centos7" target="_blank">LNMP CentOS&nbsp;&nbsp;<i>by @LukeXuan</i></a></li>
+                    <li><a href="https://atlas.hashicorp.com/boxes/search" target="_blank">Discover for yourself</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Vagrant share folder</p>
+                <p>mount Vagrantfile folder to /vagrant by default</p>
+                <img src="images/vagrant_share.PNG" alt="share">
+                <p>bi-direction</p>
+            </section>
+
+            <section>
+                <p>Vagrant port mapping</p>
+                <p>use Vagrant file</p>
+                <pre>
+  # forward guest 80 to host 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+                </pre>
+                <img src="images/vagrant_port_mapping.PNG" alt="vagrant port mapping" style="height: 60%">
+            </section>
+
+            <section>
+                <p>Vagrant commands</p>
+                <ul>
+                    <li>vagrant init &lt;box-name&gt;</li>
+                    <li>vagrant up</li>
+                    <li>vagrant ssh</li>
+                    <li>vagrant halt</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Vagrant commands</p>
+                <ul>
+                    <li>vagrant reload</li>
+                    <li>vagrant destroy</li>
+                    <li>vagrant package</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>FAQ</p>
+                <ul>
+                    <li>[Win] retry, connection time out -> enable VT-X</li>
+                    <li>[Ubuntu] can't start after kernel update -> recompile vbox</li>
+                </ul>
+            </section>
         </section>
         <!-- End of vagrant -->
 
