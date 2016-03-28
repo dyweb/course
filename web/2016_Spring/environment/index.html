@@ -1,252 +1,324 @@
 <html>
-    <head>
-        <title>2016 Spring Web develop environment setup by at15</title>
-        <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
-		<meta name="author" content="at15">
+<head>
+    <title>2016 Spring Web develop environment setup by at15</title>
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="at15">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
-        
-        <!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
-        
-        <!-- Printing and PDF exports -->
-        <!-- FIXME: this does not work properly -->
-		<script>
-            var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
-            var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? pdfCss : paperCss;
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-        
-        <!--[if lt IE 9]>
-		<script>alert('Please use Chrome');</script>
-		<![endif]-->
-        
-    </head>
-    <body>
-        <div class="reveal">
-            <div class="slides">
-                <!-- Landing page -->
-                <section>
-					<h2>Web develop environment setup</h2>
-	                <h4>2016 Spring Dongyue Web Studio</h4>
-					<p>
-						<small>Created by <a href="https:/github.com/at15" target="_blank">at15</a></small>
-					</p>
-				</section>
-                
-                <!--Contents TODO: link to other sections-->
-                <section>
-                    <h3>Contents</h3>
-                    <ul>
-                        <li>What is environment</li>
-                        <li>Setup local workspace</li>
-                        <li>Use Vagrant</li>
-                        <li>Request lifecycle</li>
-                        <li>PHP examples</li>
-                    </ul>
-				</section>
-                
-                <!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Environment</h2>
-						<p>Where your code runs</p>
-                        <ul>
-                            <li>your laptop</li>
-                            <li>bare metal server</li>
-                            <li>server in cloud</li>
-                        </ul>
-					</section>
-                    
-					<section>
-                        By location
-						<h2>Local and remote</h2>
-                        
-                        <div class="fragment">
-                            <h4>Local:</h4>
-                            <p>You have full physical control, the computer you use in your daily life.</p>
-                        </div>
-                        
-						<div class="fragment">
-                            <h4>Remote:</h4>
-                            <p>Your bare metal server hosted in <a href="https://en.wikipedia.org/wiki/Data_center" target="_blank">IDC</a>, 
-                            virtual server you bought from <a href="https://www.aliyun.com" target="_blank">aliyun</a>, 
-                            <a href="https://aws.amazon.com" target="_blank">amazon</a>.</p>
-                        </div>
-					</section>
-                    
-                    <section>
-                        By functionality
-                        <h2>Develop and Production</h2>
-                        
-                        <div class="fragment">
-                            <h4>Develop:</h4>
-                            <p>You write code and run everything on your own laptop.</p>
-                        </div>
-                        
-                        <div class="fragment">
-                            <h4>Production:</h4>
-                            <p>Customers use your application, your code runs on remote server.</p>
-                        </div>
-                    </section>
-                    
-                    <section>
-                           <h2>What we have</h2>
-                           <ul>
-                               <li>Local develop environment</li>
-                               <li>Remote develop environment</li>
-                               <li>Local production environment</li>
-                               <li>Remote production environment</li>
-                           </ul>
-                    </section>
-                    
-					<section>
-						<h2>Local develop environment</h2>
-						<ul>
-                            <li>Your code</li>
-                            <li>Application and runtime to run your code</li>
-                        </ul>
-					</section>
-                    
-                    <section>
-                        <h2>Common problems</h2>
-                        <ul>
-                            <li>Code is a mess</li>
-                            <li>Bug only occurs in production</li>
-                        </ul>
-                    </section>
-                    
-                    <section>
-                        <h2>Solutions</h2>
-                        <ul>
-                            <li>Use version control and organize your projects</li>
-                            <li>Have a unified environment setup</li>
-                        </ul>
-                    </section>
-				</section>
-                
-                <!-- Start of workspace -->
-                <section>
-                    <section>
-                        <h2>Workspace</h2>
-                        <p>Organize your code</p>
-                    </section>
-                    
-                    <section>
-                        <p>Bad example</p>
-                        <img src="images/mess-folders.PNG" alt="mess folder" style="height:80%">
-                    </section>
-                    
-                    <section>
-                        <p>Problmes</p>
-                        <ul>
-                            <li>vairous source, ie: homework, project, opensource</li>
-                            <li>name collision, ie: fork</li>
-                            <li>too many projects, ie: <a href="https://github.com/gaocegege" target="_blank">gaocegege</a></li>
-                        </ul>
-                    </section> 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-                    <section>
-                        <p>Solutions</p>
-                        <ul>
-                            <li>use nested folders</li>
-                            <li>organize by git host, <a href="https://golang.org/doc/code.html">the Go way</a></li>
-                        </ul>
-                    </section>
-                
-                    <section data-markdown>
-                        <script type="text/template">
-                         ## Nested folder
-                        
-````
-D:/Code/
-   -- homework
-      -- 2016-Spring
-         -- environment
-   -- lab
-      -- cit
-         -- distributed-monitoring
-      -- cat
-         -- wangwangwang
-   -- eclipse
-      -- che
-      -- flux
-      -- che       
-   -- good-man
-       -- ex
-          -- python-final
-       -- goodess-bf-1
-       -- goodess-ex-bf          
-          -- master-thesis
-````
-                        </script>
-                    </section>
-                    
-                    <section data-markdown>
-                        <script type="text/template">
-                        ## The Go Way
-                        
-````
-D:/workspace/src/
-   -- github.com
-      -- at15
-         -- crawler
-         -- how-to-play-tennis
-      -- gaocegege
-         -- scrala
-         -- how-to-dig-holes
-   -- git.tongqu.me
-      -- tongqu
-         -- tongqu5
-         -- tongqu-api
-         -- tongqu-web
-````
-[Workspace setup in Golang](https://golang.org/doc/code.html)
-                        </script>
-                    </section>
-                    
-                    <section>
-                        <p>The one fits you is the best for you</p>
-                    </section>
-                </section>
-                <!-- End of workspace -->
-            </div>
-        </div>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
-        
-        <script>
-            // Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css"
+          id="theme">
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js', async: true }
-				]
-			});
-        </script>
-    </body>
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script>alert('Please use Chrome');</script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <!-- Landing page -->
+        <section>
+            <h2>Web develop environment setup</h2>
+            <h4>2016 Spring Dongyue Web Studio</h4>
+            <p>
+                <small>Created by <a href="https://github.com/at15" target="_blank">at15</a></small>
+            </p>
+        </section>
+
+        <!--Contents TODO: link to other sections-->
+        <section>
+            <h3>Contents</h3>
+            <ul>
+                <li>What is environment</li>
+                <li>Use Vagrant</li>
+                <li>Setup local workspace</li>
+                <li>Request lifecycle</li>
+                <li>PHP examples</li>
+            </ul>
+        </section>
+
+        <!-- Start of environment -->
+        <section>
+            <section>
+                <h2>Environment</h2>
+                <p>Where your code runs</p>
+                <ul>
+                    <li>your laptop</li>
+                    <li>bare metal server</li>
+                    <li>server in cloud</li>
+                </ul>
+            </section>
+
+            <section>
+                By location
+                <h2>Local and remote</h2>
+
+                <div class="fragment">
+                    <h4>Local:</h4>
+                    <p>You have full physical control, the computer you use in your daily life.</p>
+                </div>
+
+                <div class="fragment">
+                    <h4>Remote:</h4>
+                    <p>Your bare metal server hosted in <a href="https://en.wikipedia.org/wiki/Data_center"
+                                                           target="_blank">IDC</a>,
+                        virtual server you bought from <a href="https://www.aliyun.com" target="_blank">aliyun</a>,
+                        <a href="https://aws.amazon.com" target="_blank">amazon</a>.</p>
+                </div>
+            </section>
+
+            <section>
+                By functionality
+                <h2>Develop and Production</h2>
+
+                <div class="fragment">
+                    <h4>Develop:</h4>
+                    <p>You write code and run everything on your own laptop.</p>
+                </div>
+
+                <div class="fragment">
+                    <h4>Production:</h4>
+                    <p>Customers use your application, your code runs on remote server.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>What we have</h2>
+                <ul>
+                    <li>Local develop environment</li>
+                    <li>Remote develop environment</li>
+                    <li>Local production environment</li>
+                    <li>Remote production environment</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Local develop environment</h2>
+                <ul>
+                    <li>Your code</li>
+                    <li>Application and runtime to run your code</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Common problems</h2>
+                <ul>
+                    <li>Code is a mess</li>
+                    <li>Bug only occurs in production</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Solutions</h2>
+                <ul>
+                    <li>Use version control and organize your projects</li>
+                    <li>Have a unified environment setup</li>
+                </ul>
+            </section>
+        </section>
+        <!-- End of environment -->
+
+        <!-- Start of vagrant -->
+        <section>
+            <section>
+                <h2>Vagrant</h2>
+                <p>A unified develop environment</p>
+                <p><i>Create and configure lightweight, reproducible, and portable develop environment.</i></p>
+                <a href="https://www.vagrantup.com/" target="_blank">offical site</a>
+            </section>
+
+            <section>
+                <p>Vagrant = virtual machine + config tools</p>
+            </section>
+
+            <section>
+                <p>Virtual Machine</p>
+                <img src="images/inception.jpg" alt="vm in vm" style="height: 80%">
+            </section>
+
+            <section>
+                <p>Virtual Machine</p>
+                <ul>
+                    <li>Vmware</li>
+                    <li>Virtual box</li>
+                    <li>Xen</li>
+                </ul>
+            </section>
+
+            <section>
+                <p><a href="http://www.vmware.com/" target="_blank">Vmware</a></p>
+                <ul>
+                    <li>Personal + Company</li>
+                    <li>Commercial + Cloud</li>
+                </ul>
+                <img src="images/vmware_ub_server.PNG" alt="vmware_screenshot" style="height:70%">
+            </section>
+
+            <section>
+                <p><a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a></p>
+                <ul>
+                    <li>Personal + Company</li>
+                    <li>OpenSource (GNU) </li>
+                </ul>
+                <img src="images/virtualbox_xp.PNG" alt="vbox_screenshot" style="height:70%">
+            </section>
+        </section>
+        <!-- End of vagrant -->
+
+        <!-- Start of workspace -->
+        <section>
+            <section>
+                <h2>Workspace</h2>
+                <p>Organize your code</p>
+            </section>
+
+            <section>
+                <p>Bad example</p>
+                <img src="images/mess-folders.PNG" alt="mess folder" style="height:80%">
+            </section>
+
+            <section>
+                <p>Problems</p>
+                <ul>
+                    <li>various source, ie: homework, project, OpenSource</li>
+                    <li>name collision, ie: fork</li>
+                    <li>too many projects, ie: <a href="https://github.com/gaocegege" target="_blank">gaocegege</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Solutions</p>
+                <ul>
+                    <li>use nested folders</li>
+                    <li>organize by git host, <a href="https://golang.org/doc/code.html">the Go way</a></li>
+                </ul>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ## Nested folder
+
+                    ````
+                    D:/Code/
+                    -- homework
+                    -- 2016-Spring
+                    -- environment
+                    -- lab
+                    -- cit
+                    -- distributed-monitoring
+                    -- cat
+                    -- wangwangwang
+                    -- eclipse
+                    -- che
+                    -- flux
+                    -- che
+                    -- good-man
+                    -- ex
+                    -- python-final
+                    -- goodess-bf-1
+                    -- goodess-ex-bf
+                    -- master-thesis
+                    ````
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ## The Go Way
+
+                    ````
+                    D:/workspace/src/
+                    -- github.com
+                    -- at15
+                    -- crawler
+                    -- how-to-play-tennis
+                    -- gaocegege
+                    -- scrala
+                    -- how-to-dig-holes
+                    -- git.tongqu.me
+                    -- tongqu
+                    -- tongqu5
+                    -- tongqu-api
+                    -- tongqu-web
+                    ````
+                    [Workspace setup in Golang](https://golang.org/doc/code.html)
+                </script>
+            </section>
+
+            <section>
+                <p>The one fits you is the best for you</p>
+            </section>
+        </section>
+        <!-- End of workspace -->
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js', async: true},
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js', async: true}
+        ]
+    });
+</script>
+</body>
 </html>
