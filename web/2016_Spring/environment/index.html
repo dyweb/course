@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
         
         <!-- Printing and PDF exports -->
+        <!-- FIXME: this does not work properly -->
 		<script>
             var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
             var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
@@ -29,7 +30,6 @@
         <!--[if lt IE 9]>
 		<script>alert('Please use Chrome');</script>
 		<![endif]-->
-        
         
     </head>
     <body>
@@ -135,7 +135,91 @@
                     </section>
 				</section>
                 
+                <!-- Start of workspace -->
+                <section>
+                    <section>
+                        <h2>Workspace</h2>
+                        <p>Organize your code</p>
+                    </section>
+                    
+                    <section>
+                        <p>Bad example</p>
+                        <img src="images/mess-folders.PNG" alt="mess folder" style="height:80%">
+                    </section>
+                    
+                    <section>
+                        <p>Problmes</p>
+                        <ul>
+                            <li>vairous source, ie: homework, project, opensource</li>
+                            <li>name collision, ie: fork</li>
+                            <li>too many projects, ie: <a href="https://github.com/gaocegege" target="_blank">gaocegege</a></li>
+                        </ul>
+                    </section> 
+
+                    <section>
+                        <p>Solutions</p>
+                        <ul>
+                            <li>use nested folders</li>
+                            <li>organize by git host, <a href="https://golang.org/doc/code.html">the Go way</a></li>
+                        </ul>
+                    </section>
                 
+                    <section data-markdown>
+                        <script type="text/template">
+                         ## Nested folder
+                        
+````
+D:/Code/
+   -- homework
+      -- 2016-Spring
+         -- environment
+   -- lab
+      -- cit
+         -- distributed-monitoring
+      -- cat
+         -- wangwangwang
+   -- eclipse
+      -- che
+      -- flux
+      -- che       
+   -- good-man
+       -- ex
+          -- python-final
+       -- goodess-bf-1
+       -- goodess-ex-bf          
+          -- master-thesis
+````
+                        </script>
+                    </section>
+                    
+                    <section data-markdown>
+                        <script type="text/template">
+                        ## The Go Way
+                        
+````
+D:/workspace/src/
+   -- github.com
+      -- at15
+         -- crawler
+         -- how-to-play-tennis
+      -- gaocegege
+         -- scrala
+         -- how-to-dig-holes
+   -- git.tongqu.me
+      -- tongqu
+         -- tongqu5
+         -- tongqu-api
+         -- tongqu-web
+````
+[Workspace setup in Golang](https://golang.org/doc/code.html)
+                        </script>
+                    </section>
+                    
+                    <section>
+                        <p>The one fits you is the best for you</p>
+                    </section>
+                </section>
+                <!-- End of workspace -->
             </div>
         </div>
         
