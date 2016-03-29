@@ -10,7 +10,7 @@ How to orgnaize all your projects
 - name collision, ie: fork
 - too many projects, ie: [gaocegege](https://github.com/gaocegege)
 
-### The long story 
+### The long story
 
 (This is not real)
 
@@ -43,7 +43,7 @@ Jack want to go back to his old code, he want to add tag for certain code, like 
 
 That's why `Git`, `GitHub` shows up.
 
-Git is a version control system, and GitHub is the most popular Git repository host, free for opensource projects. 
+Git is a version control system, and GitHub is the most popular Git repository host, free for opensource projects.
 
 #### Name collision
 
@@ -75,7 +75,7 @@ He is tired of renaming the repo.
 
 #### Too many projects
 
-Jack got  homework, lab, outsource, opensource, for gf, for goddess's bf etc. 
+Jack got  homework, lab, outsource, opensource, for gf, for goddess's bf etc.
 
 ## Solution
 
@@ -113,7 +113,7 @@ D:/Code/
 
 ### Organize by Git host
 
-This is [the Go way](https://golang.org/doc/code.html) , if you have a parent directory for `bin`. 
+This is [the Go way](https://golang.org/doc/code.html) , if you have a parent directory for `bin`.
 
 Since it's a goode idea to have all your code in sync, you may have multiple Git host, GitHub for public repos, GitLab for internal projects
 

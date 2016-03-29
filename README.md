@@ -1,5 +1,5 @@
 # README
-Dongyue Web Studio course and lecture 
+Dongyue Web Studio course and lecture
 
 - [View Documentation](https://course.readthedocs.org/en/latest/)
 - [View Course website](https://dyweb.github.io/course/)

@@ -34,7 +34,7 @@ TODO: don't need to go into detail of ssh right away ...
 
 ### vagrant destroy
 
-### vagrant 
+### vagrant
 
 ## Use the lnmp box
 

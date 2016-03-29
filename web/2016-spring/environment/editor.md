@@ -35,11 +35,11 @@ A editor independent style config. Some editor has it built in, most has plugin 
 [Offical Site](http://editorconfig.org/)
 
 - encoding
-- end of line (crlf) 
+- end of line (crlf)
 - indent
 - tab
 
-Example 
+Example
 
 ````
 root = true
@@ -68,8 +68,8 @@ indent_style = tab
 
 ### lint tools
 
-Lint tools can change your style, some can auto fix minor problems. You can also config git hooks to 
-force running lint tools before commit. Some git host like [phabricator](http://phabricator.org/) also 
+Lint tools can change your style, some can auto fix minor problems. You can also config git hooks to
+force running lint tools before commit. Some git host like [phabricator](http://phabricator.org/) also
 support running it on server.
 
 - Javascript [eslint](http://eslint.org/)
@@ -85,7 +85,7 @@ Integrated Development Environment. Editor + Code runner + Debugger .... etc.
 
 **[Student can have free liciense](https://www.jetbrains.com/student/)**
 
-- [WebStorm](https://www.jetbrains.com/webstorm) Front end 
+- [WebStorm](https://www.jetbrains.com/webstorm) Front end
 - **[PhpStorm](https://www.jetbrains.com/phpstorm/)** Front end + PHP
 - [IDEA](https://www.jetbrains.com/idea) Front end + Java + Scala + Groovy
 - [PyCharm](https://www.jetbrains.com/pycharm) Front end + Python
@@ -94,7 +94,7 @@ Also have plugin for [Golang](https://github.com/go-lang-plugin-org/go-lang-idea
 
 ### How hint works
 
-Hint is the editor show a list of words based on what you typed. It is also known as 
+Hint is the editor show a list of words based on what you typed. It is also known as
 autocomplete, [intellisense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx).
 
 #### Text only
@@ -116,7 +116,7 @@ standard library code. This is also called index, similar to what search engine 
 
 TODO: image
 
-Example 
+Example
 
 - Eclipse
 - JetBrains IDE

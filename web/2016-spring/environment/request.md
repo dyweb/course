@@ -7,8 +7,8 @@ TODO:
 
 - my short video
 - browser make a http request. (omit tcp handshake etc)
-- nginx 
-- php 
+- nginx
+- php
 - mysql
 - return to browser
 - css
