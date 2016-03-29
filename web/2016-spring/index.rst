@@ -9,6 +9,7 @@ Contents:
    :maxdepth: 2
 
    environment/index
+   git-editor-html/index
 
 `original schedule`_ is in dyweb/web-stuff repo.
 
