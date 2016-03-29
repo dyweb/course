@@ -11,16 +11,16 @@ stack. see refernece for formal explaination.
 Simplest: Develop -> Production
 --------------------------------
 
-You write code in your local machine, they deploy it to remote machine, which is the production environment. 
+You write code in your local machine, they deploy it to remote machine, which is the production environment.
 
 NOTE: Not all local environment is develop environment, you can use your own laptop to publish your works, DONT do this in SJTU, you will
-get a phone call. Not all remote environment is production environment, you can use a server to write code, like you use vim or you sync 
+get a phone call. Not all remote environment is production environment, you can use a server to write code, like you use vim or you sync
 code to server everytime you change something.
 
 Problems
 ^^^^^^^^^^^^^^^^^^^^^
 
-* You use Windows, but the server is running Ubuntu. 
+* You use Windows, but the server is running Ubuntu.
 * You use PHP5.6, but the server uses PHP5.3.
 * You use Chinese as local (GB2312), but the server uses English (UTF-8).
 
@@ -35,13 +35,13 @@ Use the exact same environment for your laptop and server.
 But what if:
 
 * You want to use Windows to play Dota. (BGM: I want to play some dota ...)
-* You can't install dual system. 
+* You can't install dual system.
 * You have a small team working on the project, you can't force everyone to install Ubuntu.
 
 Formal: Develop -> Test -> Production
 -------------------------------------
 
-You write you code locally, push to Git host, trigger test in CI (Continuous Integration), test pass, you deploy it to production. When you are working like this, 
+You write you code locally, push to Git host, trigger test in CI (Continuous Integration), test pass, you deploy it to production. When you are working like this,
 you are highly likely not alone (but still single), either you are working on some opensource projects or you are working with a team (which has no girls). DONT use
 this for your homework.
 
@@ -60,7 +60,7 @@ Solution
 
 But what if:
 
-* Someone forgot to write the guide. 
+* Someone forgot to write the guide.
 * Forgot to update CI or Production server. Worse if only production server is not up to date.
 
 Complex: Develop -> Test -> QA -> Part of Production -> Production
@@ -91,7 +91,7 @@ Future of Develop Environment
 Reference
 ---------
 
-* `Wiki Deploy Environment`_ 
+* `Wiki Deploy Environment`_
 * `Dev Ops`_
 
 .. _Wiki Deploy Environment: https://en.wikipedia.org/wiki/Deployment_environment

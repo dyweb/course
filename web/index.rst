@@ -10,5 +10,5 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   
+
    2016-spring/index

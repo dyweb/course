@@ -54,7 +54,7 @@ Linux
 /home/at15/Downloads/abs-123.rmvB  -> ok, notice that b is upper case.
 ````
 
-This could cause TROUBLE when you are using Git. 
+This could cause TROUBLE when you are using Git.
 
 TODO: how to solve that trouble ... and image, error message for that trouble.
 
