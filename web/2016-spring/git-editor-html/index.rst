@@ -8,7 +8,13 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   git
+   introduce
+   setup
+   cmd
+   workflow
+   branch
+   teamwork
+   
 
 
 You will start form the defination of environment to your how to organize your local workspace, the editor you use.

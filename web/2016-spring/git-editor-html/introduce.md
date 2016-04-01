@@ -1,4 +1,14 @@
-# Git
+# Git Introduce
+
+## What is Git?
+
+The widely used source code management system for software development in the world.
+
+## History
+
+- In 2002, the developers of the Linux kernel use [Bitkeeper](https://en.wikipedia.org/wiki/BitKeeper) to maintain the project, but the Bitkeeper is not good for developing.
+- In 2005, the copyright holder of BitKeeper, Larry McVoy, had withdrawn gratis use of the product after claiming that Andrew Tridgell had reverse-engineered the BitKeeper protocols.
+- In 2005, Torvalds decided to develop a distributed system to replace the Bitkeeper. So, he create git.
 
 ## Version Control and Collaboration
 
@@ -58,3 +68,7 @@ Benefits?
 For coders?
 - Safe master.
 - Every branch safe: "It works here!"
+
+## Reference
+
+[Wike.Git(software)](https://en.wikipedia.org/wiki/Git_(software))
