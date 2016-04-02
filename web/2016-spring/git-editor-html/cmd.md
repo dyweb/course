@@ -40,8 +40,4 @@ This will copy the a existing remote repository into your local and every versio
 $ git status
 
 ```
-As the title says, this command will show you current status of the repository. 
-
-
-## Other commands
-...(haven't thought clearly)
+As the title says, this command will show you current status of the repository.
