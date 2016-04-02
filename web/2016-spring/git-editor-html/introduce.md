@@ -71,4 +71,4 @@ For coders?
 
 ## Reference
 
-[Wike.Git(software)](https://en.wikipedia.org/wiki/Git_(software))
+- [Wike.Git(software)](https://en.wikipedia.org/wiki/Git_(software))
