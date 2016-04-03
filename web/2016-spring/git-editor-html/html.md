@@ -39,7 +39,7 @@ The browser will interpret the HTML string and display the web page.
 - The text between ``<p>`` and ``</p>`` describes a paragraph.
 
 
-## HTML DOM 
+## HTML DOM TREE
 
 If you look the above sample carefully, you will find the structure of the HTML is a tree.
 

@@ -46,8 +46,18 @@ Auto-merging index.html
 CONFLICT (content): Merge conflict in index.html 
 Automatic merge failed; fix conflicts and then commit the result.
 ```
-You can see the conflict is in 'index.html', so open the file and modify it in a good way. Then commit the result and you just solve the conflict.
+You can see the conflict is in 'index.html', so open the file and find the conflict mark.
 
+```
+<<<<<<< HEAD
+The codes in current branch
+====== 
+The codes in merging branch 
+>>>>>>> Merging branch
+```
+The codes under the ``<<<<<<< HEAD`` is your current branch codes, the codes between the ``====== `` and `>>>>>>> Merging branch` is the codes in merging branch.
+
+Here is a sample.
 ```
 <<<<<<< HEAD:index.html
 <div id="footer">sway</div>
@@ -57,3 +67,7 @@ sway
 </div>
 >>>>>>> gh-pages:index.html
 ```
+
+## Reference
+
+- [Learn Git Branching](http://pcottle.github.io/learnGitBranching/)

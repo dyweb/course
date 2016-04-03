@@ -10,7 +10,6 @@ Contents:
 
    introduce
    setup
-   cmd
    workflow
    branch
    teamwork

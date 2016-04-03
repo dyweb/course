@@ -10,7 +10,7 @@ The widely used source code management system for software development in the wo
 - In 2005, the copyright holder of BitKeeper, Larry McVoy, had withdrawn gratis use of the product after claiming that Andrew Tridgell had reverse-engineered the BitKeeper protocols.
 - In 2005, Torvalds decided to develop a distributed system to replace the Bitkeeper. So, he create git.
 
-## Version Control and Collaboration
+## Version Control
 
 You won't like this:
 
@@ -60,14 +60,23 @@ $ git log --graph --oneline
 * 8ab6c50 outline only
 ````
 
-Benefits?
+## Collaboration
+
+When you work in a team. It's necessary to integrate everyone's work.
+
+- copying and cover the files ?
+- svn, working-copy collaboration
+- git, repo-to-repo collaboration
+
+![image](./images/git_vs_svn.png)
+
+
+## Benefit
+
 - Detailed history.
 - Better collaboration: safely write on your own, then merge.
 - Peer review.
 
-For coders?
-- Safe master.
-- Every branch safe: "It works here!"
 
 ## Reference
 

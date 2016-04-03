@@ -16,6 +16,15 @@ Cause we are all students, I don't think we should obey lots of rules of writing
 - Don't take your subjective emotion. Like fuck, wo cao, !!! ...
 - Make the messages clear. Know the meaning of your own message at least...
 
+## Comparison of two different teamwork
+
+![image](./images/commit_message_0.png)
+
+
+![image](./images/commit_message_1.png)
+
+**Every commit messages will be your possible black history ~ **
+
 ## Maintain multiple branches
 
 If you only have one branches, you may meet some problems.
@@ -36,17 +45,6 @@ Popularly, we always maintain two different types of branches.
     - feature
     - bug
     - hotfix
-    
-    
-## Comparison of two different teamwork
-
-![image](./images/commit_message_0.png)
-
-
-![image](./images/commit_message_1.png)
-
-**Every commit messages will be your possible black history ~ **
-
 
 ## Reference
 
