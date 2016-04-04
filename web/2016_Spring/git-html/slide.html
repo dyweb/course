@@ -1,0 +1,630 @@
+<html>
+<head>
+    <title>2016 Spring Web develop environment setup by at15</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="at15">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css"
+          id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script>alert('Please use Chrome');</script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <!-- Landing page -->
+        <section data-background="images/space.png">
+            <h2>Web develop git & html</h2>
+            <h4>2016 Spring Dongyue Web Studio</h4>
+            <p>
+                <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+            </p>
+        </section>
+
+        <!--Contents TODO: link to other sections-->
+        <section>
+            <h3>Contents</h3>
+            <ul>
+                <li>What is Git?</li>
+                <li>Getting Start With Git</li>
+                <li>Git Workflow</li>
+                <li>Git Branch</li>
+                <li>Teamwork</li>
+                <li>HTML Introduce</li>
+            </ul>
+        </section>
+
+        <!-- Start of introduce -->
+        <section>
+            <section>
+                <h2>What is Git?</h2>
+                <p class="fragment">The widely used source code management system for software development in the world.</p>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Version Control
+                    You won't like this:
+                    
+                    ````
+                    D:/Schoolwork/Group-work-1
+                      -- our-fancy-work-v1-outline-only
+                      -- our-fancy-work-v2-victor-part-done
+                      -- our-fancy-work-v2-cece-part-done
+                      -- our-fancy-work-v3-victor-and-cece-merged
+                      -- our-fancy-work-v3-victor-part-updated
+                      -- our-fancy-work-v4-victor-part-updated-again
+                      -- our-fancy-work-v5-victor-part-updated-again-and-cece-merged
+                      -- our-fancy-work-v8-final
+                      -- our-fancy-work-v9-final-updated-by-victor
+                      -- our-fancy-work-v9-final-updated-by-cece
+                      -- our-fancy-work-v10-final-updated-merged
+                      -- our-fancy-work-v11-final-final
+                    ````
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    What if we have Git?
+                    
+                    ````
+                    D:/Schoolwork/Group-work-1
+                      -- our-fancy-work
+                      -- .git # <- Hidden
+                    ````
+                    ````
+                    $ git log --graph --oneline
+                    * 1fa35d1 final final
+                    *   d0eb39d Merge branch 'cece'
+                    |\  
+                    | * 10604d8 final updated by cece
+                    * | 243bd99 final updated by victor
+                    |/  
+                    * 8e4c071 final
+                    *   a8e02e7 Merge branch 'master' into cece
+                    |\  
+                    | * 222a46f victor part updated again
+                    | * 391ea6c victor part updated
+                    * |   7b3fe97 Merge branch 'master' into cece
+                    |\ \  
+                    | |/  
+                    | * e919d2d victor part done
+                    * | e0c35e5 cece part done
+                    |/  
+                    * 8ab6c50 outline only
+                    ````
+                    
+                </script>
+            </section>
+            <section>
+                <h2>Collaboration</h2>
+                <p>When you work in a team, it’s necessary to integrate everyone’s work.</p>
+                <ul>
+                    <li>copying and cover the files ?</li>
+                    <li>svn, working-copy collaboration ?</li>
+                    <li>git, repo-to-repo collaboration  </li>
+                </ul>
+            </section>
+            <section>
+                <p> The difference between svn and git </p>
+                <img src="images/git_vs_svn.png">
+            </section>
+            <section>
+                <h2>Benefit</h2>
+                <ul>
+                    <li>Detailed history.</li>
+                    <li>Peer review.</li>
+                    <li>better collaboration</li>
+                </ul>
+            </section>
+        </section>
+        <!-- End of introduce -->
+
+        <!-- Start of start -->
+        <section>
+            <section data-background="images/vagrant_bg.png">
+                <h2>Getting Start</h2>
+                <p>How to install Git?</p>
+                <p><i>It's so easy, just enter the offical site. </i></p>
+                <a href="https://git-scm.com/downloads" target="_blank">offical site</a>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ## Use command line
+                    If you are in windows.
+                    - Go to the directory you want to work in, and click your right mouse and choose *git bash*.
+                    - Input *git* to see the usage.
+                    - It should look like this
+                        
+                    ```
+                    $ git
+                    usage: git [--version] [--help] [-C <path>] [-c name=value]
+                               [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+                               [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+                               [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+                               <command> [<args>]
+                    ```
+                </script>
+                
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ## First command
+                    Use *git config* to set up your personal info
+                    ```
+                    $ git config --global user.name [username]
+                    $ git config --global user.email [email]
+                    ```
+                </script>
+            </section>
+
+            <section>
+                <h2>The basic commands you have to know</h2>
+                <ul>
+                    <li>git init</li>
+                    <li>git clone [url]</li>
+                    <li>git status</li>
+                </ul>
+            </section>
+            
+            <section data-markdown>
+                <script type="text/template">
+                    ## Initialize a repository
+                    Use *git init* to initialize a repository in your current directory.
+                    ```
+                    $ git init
+                    Initialized empty Git repository in /Users/sway/WebProj/test-project/.git/
+                    $ ls -a
+                    .    ..   .git
+                    ```
+                    A new subdirectory named *.git* was created.
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Clone an existing repository
+                    Use *git clone [url]* to copy an existing remote repository into your local.
+                    ```
+                    $ git clone https://github.com/dyweb/web-stuff
+                    remote: Counting objects: 695, done.
+                    remote: Compressing objects: 100% (11/11), done.
+                    remote: Total 695 (delta 4), reused 0 (delta 0), pack-reused 684
+                    Receiving objects: 100% (695/695), 1.56 MiB | 224.00 KiB/s, done.
+                    Resolving deltas: 100% (320/320), done.
+                    Checking connectivity... done.
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Checking status
+                    Use *git status* to show you current status of the repository.
+                    ```
+                    $ git status
+                    On branch master
+                    Your branch is up-to-date with 'origin/master'.
+                    nothing to commit, working directory clean
+                    ```
+                </script>
+            </section>
+
+        </section>
+        <!-- End of start -->
+
+        <section>
+            <section>
+                <h2>Workflow</h2>
+                <ul>
+                    <li>Submit your local changes</li>
+                    <li>Update your local repository</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Submit</h2>
+                <ul>
+                    <li>git add</li>
+                    <li>git commit</li>
+                    <li>git push</li>
+                </ul>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## First step
+                    Create a README.md file in your directory
+                    ```
+                    $ git status
+                    On branch master
+
+                    Initial commit
+
+                    Untracked files:
+                      (use "git add <file>..." to include in what will be committed)
+
+                        README.md
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Second step
+                    Use *git add* to add the file to git index.
+                    ```
+                    $ git add README.md
+                    $ git status
+                    On branch master
+
+                    Initial commit
+
+                    Changes to be committed:
+                      (use "git rm --cached <file>..." to unstage)
+
+                        new file:   README.md
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Third step
+                    Use *git commit* to create a record contained your changes.
+                    ```
+                    $ git commit -m"Init"
+                    [master (root-commit) 8ecc069] Init
+                     1 file changed, 1 insertion(+)
+                     create mode 100644 README.md
+                     
+                    $ git status
+                    On branch master
+                    nothing to commit, working directory clean
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ##  Finally
+                    Use *git push* to submit your commit.
+                    ```
+                    $ git push
+                    Counting objects: 7, done.
+                    Delta compression using up to 4 threads.
+                    Compressing objects: 100% (7/7), done.
+                    Writing objects: 100% (7/7), 1.11 KiB | 0 bytes/s, done.
+                    Total 7 (delta 2), reused 0 (delta 0)
+                    To git@github.com:dyweb/course.git
+                       4d4cfb1..8858171  2016-spring/git-editor-html -> 2016-spring/git-editor-html
+                    ```
+                </script>
+            </section>
+            <section>
+                <h2>Update</h2>
+                <p class="fragment">git pull</p>
+                <p class="fragment">git pull = git fetch + git merge</p>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ##  Update
+                    Use *git pull* to update your repository.
+                    ```
+                    $ git pull
+                    remote: Counting objects: 7, done.
+                    remote: Compressing objects: 100% (5/5), done.
+                    remote: Total 7 (delta 2), reused 7 (delta 2), pack-reused 0
+                    Unpacking objects: 100% (7/7), done.
+                    From github.com:dyweb/course
+                       4d4cfb1..8858171  2016-spring/git-editor-html -> origin/2016-spring/git-editor-html
+                    Updating 4d4cfb1..8858171
+                    ```
+                </script>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Branch</h2>
+                <ul>
+                    <li>Diverge everyone's work</li>
+                    <li>Control the production environment</li>
+                </ul>
+            </section>
+            <section>
+                <p>See the picture</p>
+                <image src="images/branch.png">
+            </section>
+            <section>
+                <h2>Working with branches</h2>
+                <ul>
+                    <li>List branch: git branch </li>
+                    <li>Create branch: git branch [name] </li>
+                    <li>Switch branch: git checkout [name]</li>
+                    <li>Merge branch: &nbsp;git merge [name]</li>
+                </ul>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## List branch
+                    ```
+                    $ git branch
+                      enhance/new-ui
+                      * gh-pages
+                      master
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Create branch
+                    ```
+                    $ git branch test
+                    $ git branch
+                      enhance/new-ui
+                      * gh-pages
+                      master
+                      test
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Switch branch
+                    ```
+                    $ git checkout test
+                    $ git branch
+                      enhance/new-ui
+                      gh-pages
+                      master
+                    * test
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Merge branch
+                    Suppose we add a index.html in master branch, and we commit it.
+                    ```
+                    [master c27fdbd] Add index.html
+                    1 file changed, 1 insertion(+)
+                    create mode 100644 index.html
+                    ```
+                    Now we want to get the change in test branch.
+                    ```
+                    $ git merge master 
+                    Updating 8ecc069..c27fdbd
+                    Fast-forward
+                     index.html | 1 +
+                     1 file changed, 1 insertion(+)
+                     create mode 100644 index.html
+                    ```
+                </script>
+            </section>
+            <section>
+                <p>It looks like this</p>
+                <img src="images/merge.png"/>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## Merge branch
+                    But frequently, The merge operation won’t execute well.
+                    
+                    when same codes were modified by different people in same time...
+                    
+                    Aha, Conflict!
+                    ```
+                    $ git merge test
+                    Auto-merging index.html 
+                    CONFLICT (content): Merge conflict in index.html 
+                    Automatic merge failed; fix conflicts and then commit the result.
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    Don't be afraid.
+                    
+                    It's always easy to solve conflicts except some specially condition??
+                    
+                    Conflicts look like this
+                    
+                    ```
+                    <<<<<<< HEAD
+                    The codes in current branch
+                    ====== 
+                    The codes in merging branch 
+                    >>>>>>> Merging branch
+                    ```
+                    Here is a sample
+                    ```
+                    <<<<<<< HEAD:index.html
+                    <div id="footer">sway</div>
+                    =======
+                    <div id="footer">
+                    sway
+                    </div>
+                    >>>>>>> gh-pages:index.html
+                    ```
+                </script>
+            </section>
+            <section>
+                <p>Recommand a website to learn git branch</p>
+                <p>
+                    <small><a href="http://pcottle.github.io/learnGitBranching/" target="_blank">Learn Git Branching</a></small>
+                </p>
+            </section>
+        </section>
+
+        <!-- Start of teamwork -->
+        <section>
+            <section>
+                <h2> Teamwork </h2>
+                <p>How to use git effectively in teams?<p>
+            </section>
+            <section>
+                <h2> Commit Message </h2>
+                <p> A good message writing can: </p>
+                <ul>
+                    <li>Speed up the reviewing process.</li>
+                    <li>Help us write a good release note</li>
+                    <li>Help the future maintainers</li>
+                </ul>
+            </section>
+            <section>
+                <p>Here is a comparison of two teams using git </p>
+                <img src="images/commit_message_0.png"/>
+            </section>
+            <section>
+                <img src="images/commit_message_1.png"/>
+            </section>
+            <section>
+                <p>Every commit messages could become your black history ~</p>
+            </section>
+            <section>
+                <h2>Maintain multiple branches</h2>
+                <p>If you only have one branch...</p>
+                <ul>
+                    <li>Boss: The clients say the product should add xxx function! You should add it before tomorrow!
+</li>
+                    <li>You add the function in you only branch hardly, you forget other programmer change some architecture yesterday. Finally, you build a incomplete version and hand out to the clients...</li>
+                    <li>It’s a stupid tragedy...</li>
+                </ul>
+            </section>
+            <section>
+                <div>
+                    <p>Main branches</p>
+                    <ul>
+                        <li>master</li>
+                        <li>stable</li>
+                    </ul>
+                </div>
+                <div class="fragment">
+                    <p>Support branches
+                    <ul>
+                        <li>feature</li>
+                        <li>bug</li>
+                        <li>hotfix</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <!-- End of teamwork -->
+        <section>
+            <section>
+                <h2>HTML</h2>
+                <p>It doesn't mean How to ...</p>
+                <ul>
+                    <li>HyperText Markup Language</li>
+                    <li>Describe web documents</li>
+                    <li>Consist of different tags</li>
+                </ul>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## A sample HTML
+                    ```
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>My first html</title>
+                    </head>
+                    <body>
+                        <div style="background-color: green">
+                            <p> My first paragraph </p>
+                        </div>
+                        <p>My second paragraph.</p>
+                    </body>
+                    </html>
+                    ```
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                    ## What the tags mean?
+                    - The text between ``<html>`` and ``</html>`` describes an HTML document.
+                    - The text between ``<head>`` and ``</head>`` provides information about the document.
+                    - The text between ``<title>`` and ``</title>`` provides a title for the document.
+                    - The text between ``<body>`` and ``</body>`` describes the visible page content.
+                    - The text between ``<div>`` and ``</div>`` describes a block element.
+                    - The text between ``<p>`` and ``</p>`` describes a paragraph.
+                </script>
+            </section>
+            <section>
+                <p>A website to learn HTML</p>
+                <p>
+                    <small><a href="http://www.w3schools.com/html/default.asp" target="_blank">w3school</a></small>
+                </p>
+            </secton>
+        </section>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js', async: true},
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js', async: true}
+        ]
+    });
+</script>
+</body>
+</html>
