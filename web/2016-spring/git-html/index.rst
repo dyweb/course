@@ -1,4 +1,4 @@
-Git, Editor and HTML
+Git & HTML
 ====================================
 
 This course mainly tells you how to start writing HTMLs in an editor, using Git for version control.
