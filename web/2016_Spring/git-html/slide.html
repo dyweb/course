@@ -33,10 +33,26 @@
     <!--[if lt IE 9]>
     <script>alert('Please use Chrome');</script>
     <![endif]-->
-
+    <style type="text/css">
+        #ghost {
+            position:fixed;
+            left:50px;
+            top:50px;
+            z-index:999;
+            width: 150px;
+            height:auto;
+        }
+        @media (max-width: 960px){
+            #ghost {
+                width: 50px;
+                height: auto;
+            }
+        } 
+    </style>
 </head>
 <body>
 <div class="reveal">
+    <img id="ghost" src="images/ghost.jpg"/>
     <div class="slides">
         <!-- Landing page -->
         <section data-background="images/space.png">
@@ -598,7 +614,6 @@
         </section>
     </div>
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
 
