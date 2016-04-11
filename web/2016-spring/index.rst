@@ -10,6 +10,7 @@ Contents:
 
    environment/index
    git-html/index
+   js-start/index
 
 `original schedule`_ is in dyweb/web-stuff repo.
 
