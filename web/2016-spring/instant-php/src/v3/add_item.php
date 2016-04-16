@@ -3,7 +3,7 @@ define('MY_SITE', 1);                       // Define MY_SITE constant
 require 'include/function.php';             // Load "include/function.php" file
 
 // Form Validation
-if (empty($_POST['name'])) {
+if (empty($_POST['name']) || empty(trim($_POST['name']))) {
     die('Name required');
 }
 
