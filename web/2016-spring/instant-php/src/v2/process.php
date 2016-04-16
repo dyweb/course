@@ -20,9 +20,17 @@ for ($i = 0; $i < count($areas); ++$i) {                // Iterate $areas array
 }
 
 // Prepare data to store on our disk
-$data = "Name: $name Tickets: " . implode($quantities, ',') . PHP_EOL;
+$data = "Name: $name ";                                 // Set $data with "Name: xxx"
+$data .= "Tickets: " . implode($quantities, ',');       // Append ticket info with turning $quantities into a string
+$data .= PHP_EOL;                                       // Append EOL (usually "\n" in Linux) character
+
 // Open data.txt and write our data to this file
-file_put_contents('data.txt', $data, FILE_APPEND);
+$result = @file_put_contents('data.txt', $data, FILE_APPEND);
+if ($result === false) {                                // If the writing operation failed
+    $error = error_get_last();                          // Get last error
+    echo $error['message'] . '<br>';                    // Print error message
+    die('Failed to write data into data.txt');          // Print failure info and exit
+}
 
 // Render HTML
 ?>
