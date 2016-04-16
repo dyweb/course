@@ -25,7 +25,7 @@ $cart = get_cart();                 // Get the cart from an external defined fun
                     value="<?= $item['quantity'] ?>">
             </li>
             <li>
-                <a href="<?= 'remove_item.php?name=' . urlencode($item['name']) ?>">Remove</a>
+                <a href="<?= 'remove_item.php?name=' . rawurlencode($item['name']) ?>">Remove</a>
             </li>
         <?php endforeach; ?>
         </ul>
