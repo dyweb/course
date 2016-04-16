@@ -90,8 +90,8 @@ function add_item($item_name) {
     }
 
     $_SESSION['cart'][] = [
-        'name' => $item_name,
-        'quantity' => 0
+        'name' => (string) $item_name,
+        'quantity' => 1                                 // The quantity must be positive
     ];
 }
 

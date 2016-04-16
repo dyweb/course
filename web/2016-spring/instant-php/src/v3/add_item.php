@@ -7,8 +7,15 @@ if (empty($_POST['name'])) {
     die('Name required');
 }
 
-// Fetch name and add it to the cart
+// Fetch name
 $name = trim($_POST['name']);
+
+// Check duplicate item
+if (get_item($name) !== null) {
+    die('Item exists');
+}
+
+// Add it to the cart
 add_item($name);
 
 // Redirect to cart page

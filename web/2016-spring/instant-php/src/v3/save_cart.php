@@ -10,7 +10,7 @@ if (!isset($_POST['quantity']) || !is_array($_POST['quantity'])) {
 $items = $_POST['quantity'];
 // Iterate each item and update quanity
 foreach ($items as $name => $quantity) {
-    set_item_quantity($name, $quantity);
+    set_item_quantity((string) $name, $quantity);
 }
 
 // Redirect to cart page
