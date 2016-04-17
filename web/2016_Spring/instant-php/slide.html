@@ -816,15 +816,15 @@ php -S localhost:8000 -t ./src/
 
             ```php
             <?php
-            print_r(empty($a)); // true, $a is not defined
+            var_dump(empty($a)); // true, $a is not defined
             $a = '';
-            print_r(empty($a));        // true
-            print_r(empty(false));     // true
-            print_r(empty('false'));   // true
-            print_r(empty(0));         // true
-            print_r(empty('0'));       // true
-            print_r(empty(' '));       // false
-            print_r(empty(trim(' '));  // true
+            var_dump(empty($a));        // true
+            var_dump(empty(false));     // true
+            var_dump(empty('false'));   // true
+            var_dump(empty(0));         // true
+            var_dump(empty('0'));       // true
+            var_dump(empty(' '));       // false
+            var_dump(empty(trim(' '));  // true
             ?>
             ```
           </script>
@@ -890,7 +890,7 @@ php -S localhost:8000 -t ./src/
         </section>
         <section data-markdown>
           <script type="text/template">
-            ## Let's Have a Look
+            ## Let's Have a Look (Cont.)
 
             v2/process.php
 
@@ -954,6 +954,9 @@ php -S localhost:8000 -t ./src/
             </body>
             </html>
             ```
+            http://localhost:8000/v2/process.php
+
+            *(Visiting this page directly would fail...)*
           </script>
         </section>
         <section data-markdown>
@@ -968,6 +971,238 @@ php -S localhost:8000 -t ./src/
           <p>Form data are sent not from query string, but where?</p>
           <p class="fragment">Open your developer tool!</p>
           <img src="images/part4/form-data.png" class="fragment">
+        </section>
+        <section>
+          <h3>POST Form? (Cont.)</h3>
+          <p>quantity[0], quantity[1], quantity[2], quantity[3]?</p>
+          <p class="fragment">PHP will parse them as:</p>
+          <ul class="fragment">
+            <li>$_POST['quantity'][0]</li>
+            <li>$_POST['quantity'][1]</li>
+            <li>$_POST['quantity'][2]</li>
+            <li>$_POST['quantity'][3]</li>
+          </ul>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Array
+
+            ```php
+            <?php
+            $a = ['a', 'b', 1];
+            var_dump(count($a));             // 3
+            var_dump(implode(',', $a));      // a,b,1
+            var_dump(join(',', $a));         // a,b,1
+            var_dump(explode(',', 'a,b,c));  // [a, b, c]
+
+            array_push($a, 1);
+            var_dump($a);                    // [a,b,1,1]
+            $a[] = 2;
+            var_dump($a);                    // [a,b,1,1,2]
+            var_dump(in_array(2, $a);        // true
+            unset($a[4]);                    // Remove 2 from $a
+            var_dump($a);                    // [a,b,1,1]
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## foreach?
+
+            ```php
+            <?php
+            $arr = [
+                'haha' => 'foo',
+                1 => 'goo',
+                'hoo'
+            ];
+
+            foreach ($arr as $key => $value) {
+                echo "$key $value<br>";
+            }
+            // Output:
+            // haha foo
+            // 1 goo
+            // 2 hoo
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Double-quoted string?
+
+            ```php
+            <?php
+            $a = 1;
+            $b = 'haha';
+            $c = ['a', 'b', 'c'];
+
+            // Print 1 haha a
+            echo "$a $b {$c[0]}";
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## <?=
+
+            ```php
+            <?= 'a' ?>
+            <!-- Equivalent -->
+            <?php echo 'a' ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Haha!
+
+            The "v2/complete_order.php" has been conquered!
+
+            Let's move on...
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Validation
+
+            ```php
+            <?php
+            var_dump(1 == '1');    // true
+            var_dump(1 === '1');   // false
+            var_dump(0 <=> 2);     // -1 (PHP 7 only)
+            var_dump(2 <=> 2);     // 0 (PHP 7 only)
+            var_dump(2 <=> 0);     // 1 (PHP 7 only)
+
+            $foo = isset($a) ? $a : '';  // $a is not defined, so $foo = ''
+            $foo2 = $a ?? '';     // Equivalent (PHP 7 only)
+
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Validation (Cont.)
+
+            ```php
+            <?php
+            var_dump(is_int('1'));   // false
+            var_dump(is_bool(1));    // false
+            var_dump(intval('1'));   // 1
+            var_dump(intval('foo')); // 0
+
+            var_dump(filter_var('0755', FILTER_VALIDATE_INT));      // 755
+            var_dump(filter_var('a@b.com', FILTER_VALIDATE_EMAIL)); // a@b.com
+            var_dump(filter_var('abc', FILTER_VALIDATE_EMAIL));     // false
+
+            var_dump(preg_match('/^0?1[3578]\d{9}$/', '13301234567')); // 1
+
+            var_dump(isset($a));     // false
+            $a = 1;
+            var_dump(isset($a));     // true
+            $b = [0, 1];
+            var_dump(isset($b[2]));  // false
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Store Data
+
+            ```php
+            <?php
+            $file = 'test.txt';
+            $content = 'hahahaha';
+            file_put_contents($file, $content);
+
+            echo file_get_contents($file);
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Store Data (Cont.)
+
+            - Another Way
+              - fopen()
+              - fwrite()
+              - fread()
+              - fclose()
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Error handling
+
+            - Operator @
+
+            ```php
+            <?php
+            $file = 'http://test.txt'; // Invalid file
+            $content = 'hahahaha';
+            // An error occurred
+            file_put_contents($file, $content);
+            ```
+
+            ```php
+            <?php
+            $file = 'http://test.txt'; // Invalid file
+            $content = 'hahahaha';
+
+            // An error was depressed
+            $result = @file_put_contents($file, $content);
+            var_dump($result); // false
+            var_dump(error_get_last());  // Get error info
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Error handling (Cont.)
+
+            ### Better Handling
+            - Register error handler: `set_error_handler()`
+            - Catch exceptions: `try ... catch ... finally`
+              ```php
+              <?php
+              try {
+                  throw new Exception('error!!');
+              } catch (Exception $e) {
+                  echo $e->getMessage();
+              }
+              ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Serialization
+
+            - serialize(), unserialize()
+            - explode(), implode()
+            - json_encode(), json_decode()
+
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Congratulations
+
+            We have conquered the second version!
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Assignments (I)
+
+            Finish a simple To-do List application
+            - Only one file "todo.php" is enough
+                - Multiple files are also ok
+            - Try to implement displaying, creating, editing & deleting of to-do items
+            - No JS & CSS needed
+                - Just focus on PHP coding
+            - (Advanced) Try to add file uploading in item creating form
+                - *Tips: Use $_FILES superglobal*
+          </script>
         </section>
       </section>
       <section>
