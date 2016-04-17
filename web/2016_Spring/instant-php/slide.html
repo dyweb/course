@@ -57,6 +57,10 @@
     .reveal pre {
       font-family: 'Source Code Pro', Consolas, 'Curior New', 'Arial', monospace;
     }
+    .reveal .form-control {
+      font-size: 25px;
+      height: 1.8em;
+    }
   </style>
 
 </head>
@@ -76,11 +80,11 @@
         <ul>
           <li><a href="#/why-php">Why PHP</a></li>
           <li><a href="#/env">Environment</a></li>
-          <li><a href="#/2">Version 1</a></li>
-          <li><a href="#/3">Version 2</a></li>
-          <li><a href="#/4">Version 3</a></li>
-          <li><a href="#/5">Version 4</a></li>
-          <li><a href="#/6">Homework</a></li>
+          <li><a href="#/v1">First Try: Ticket Order</a></li>
+          <li><a href="#/v2">Second Try: Ticket Order+</a></li>
+          <li><a href="#/v3">Third Try: Cart</a></li>
+          <li><a href="#/v4">Another Try: Cart Component</a></li>
+          <li><a href="#/assignment">Assignment</a></li>
         </ul>
       </section>
       <section id="why-php">
@@ -311,7 +315,7 @@
               hello world
             </code></pre>
             <p class="fragment">Just one line!!</p>
-            <img class="fragment" src="images/part1/emoji_meng.jpeg">
+            <img class="fragment" src="images/part1/emoji-meng.jpeg">
           </section>
           <section>
             <h3>PHP Hello World</h3>
@@ -320,7 +324,7 @@
 &lt;?php echo 'hello world'; ?>
             </code></pre>
             <p>Still one line with <code>&lt;?php</code> block!!</p>
-            <img class="fragment" src="images/part1/emoji_meng.jpeg">
+            <img class="fragment" src="images/part1/emoji-meng.jpeg">
           </section>
       </section>
       <section id="env">
@@ -434,6 +438,536 @@ vagrant up --provider virtualbox
             - ISAPI
             - CLI
           </script>
+        </section>
+      </section>
+      <section id="v1">
+        <section data-markdown>
+          <script type="text/template">
+            ## First Try
+
+            Before we start, clone the repo and find the code files.
+
+            Here is one way to run a server:
+            ```bash
+git clone https://github.com/dyweb/course.git dyweb-course
+cd dyweb-course/web/2016_Spring/instant-php
+php -S localhost:8000 -t ./src/
+# PHP 7.0.4 Development Server started at Sun Apr 17 19:26:52 2016
+# Listening on http://localhost:8000
+# Document root is D:\Web\dyweb-course\course\web\2016-spring\instant-php\src
+# Press Ctrl-C to quit.
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## First Try
+
+            Before we start, let's do some funny things!
+
+            [HERE WE GO](https://learnxinyminutes.com/docs/zh-cn/php-cn/)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## First Try
+
+            Here is our form page (v1/order.html):
+
+            ```html
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Ticket Ordering</title>
+            </head>
+            <body>
+            <h1>Ticket Ordering</h1>
+            <p>You are ordering tickets of the concert <em>Hello World</em>.</p>
+            <form method="GET" action="process.php">
+              <p>
+                <label>Name</label>
+                <input name="name" type="text" placeholder="Your Name">
+              </p>
+              <p>
+                <label>Ticket Quantity</label>
+                <input name="quantity" type="number" placeholder="Quantity" min="0" max="5" style="width: 100px;">
+              </p>
+              <button>Submit</button>
+            </form>
+            </body>
+            </html>
+            ```
+
+            [Visit from our tiny server](http://localhost:8000/v1/order.html)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Form
+
+            ```html
+            <form method="GET" action="process.php"></form>
+            ```
+
+            - We use form to submit data to a server
+            - *method*: GET / POST
+            - *action*: The page to handle the submission request
+          </script>
+        </section>
+        <section>
+          <h3>Form Controls</h3>
+          <pre><code data-trim>&lt;input name="username" type="text" placeholder="User Name"&gt;</code></pre>
+          <input class="form-control center-block" name="username" type="text" placeholder="User Name" style="width: 20vw;">
+          <pre><code data-trim>&lt;input name="quantity" type="number" placeholder="Quantity(1-5)" min="1" max="5" step="1"&gt;</code></pre>
+          <input class="form-control center-block" name="quantity" type="number" placeholder="Quantity(1-5)" min="1" max="5" step="1" style="width: 20vw;">
+          <pre><code data-trim>&lt;input name="password" type="password" placeholder="Password"&gt;</code></pre>
+          <input class="form-control center-block" name="password" type="password" placeholder="Password" style="width: 20vw;">
+        </section>
+        <section>
+          <h3>Form Controls</h3>
+          <p>Checkbox</p>
+          <label class="center-block"><input class="form-control" name="checked" type="checkbox" style="width: 2em; display: inline;">I'm cute</label>
+          <p>Drop List</p>
+          <select name="droplist" class="form-control center-block" style="width: 20vw;">
+            <option>Who is the cutest?</option>
+            <option>at15</option>
+            <option>arrowrowe</option>
+            <option>swaylq</option>
+            <option>XLuke</option>
+            <option>gaocegege</option>
+          </select>
+          <p>Text Area</p>
+          <textarea name="intro" class="form-control center-block" style="width: 20vw; min-height: 5em;" placeholder="Introduction..."></textarea>
+          <p>Tips: <kbd>View Source</kbd> <em>to find out how these elements work!</em></p>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Where to receive data?
+
+            Check the address bar!
+
+            ```
+            http://localhost:8000/v1/process.php?name=at15&quantity=3
+            ```
+
+            - The data are appended after the <code>?</code> character
+            - Also called <em>Query String</em>
+            - <em>GET</em> will put form data into after <code>?</code>
+
+            <img src="images/part3/url.png" style="background-color: #fff;">
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Handle data at server side
+
+            Here is our "v1/process.php"
+
+            ```php
+            <?php
+            // Set timezone to UTC+8
+            date_default_timezone_set('Asia/Shanghai');
+
+            // Fetch form data from query string
+            $name = empty($_GET['name']) ? '' : $_GET['name'];
+            $quantity = empty($_GET['quantity']) ? '' : $_GET['quantity'];
+
+            // If the form is submitted
+            if ($name == '' || $quantity == '') {
+                die('Name and quantity required');
+            }
+
+            // Process order result
+            $price = 3.00;
+            $total_price = $quantity * $price;
+
+            // Output result
+            ?>
+            <h1>Ticket Ordering</h1>
+            <p>Your order was created successfully.</p>
+            <ul>
+              <li>Name: <?php echo $name; ?></li>
+              <li>Tickets: <?php echo $quantity; ?></li>
+              <li>Amount: $<?php echo number_format($total_price, 2) ?></li>
+              <li>Ordered at: <?php echo date('Y-m-d H:i:s') ?></li>
+              <li>Order No: <?php echo sprintf('%010d', $quantity * 10 + 1) ?></li>
+            </ul>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP is HTML?
+
+            - We can write HTML in PHP, and it can be printed correctly!
+            - We have to write PHP script elsewhere.
+
+            ```php
+            <!-- Yes! This is a php file! -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Hello</title>
+            </head>
+            <body>
+              <p>Hello, <em>ComMouse</em>!</p>
+            </body>
+            </html>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Tag!
+
+            Where we write PHP code
+            ```php
+            <!-- Write some code in PHP block -->
+            <?php $foo = 'at15'; ?>
+            <!-- And render our HTML correctly! -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Hello</title>
+            </head>
+            <body>
+              <p>Hello, <em>ComMouse</em>!</p>
+              <!-- Print our variable defined in PHP block -->
+              <p>foo is <?php echo $foo; ?></p>
+            </body>
+            </html>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Variables
+
+            ```php
+            <?php // Don't forget it!
+
+            $var = 1; // I'm a variable!
+
+            $var = 'a'; // I can have an arbitrary type!
+
+            $var = $foo; // ERROR: $foo is not defined!
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Comments
+
+            ```php
+            <?php
+
+            // I'm a comment
+
+            /*
+             * I'm a multi-line comment
+             */
+
+            # I'm also a comment (not recommended)
+
+            // Comment Before Closing Tag ?> Here is not in a comment.
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## String
+
+            ```php
+            <?php
+
+            $str = 'haha';         // I'm a string
+            $str2 = $str . 'fufu'; // Use `.` to concatenate strings
+
+            // Output hahafufu
+            echo $str2;
+
+            $foo = 1;
+            $str2 = 'haha' . $foo; // $foo will be converted to a string
+
+            // Output "haha1"
+            echo $str2;
+
+            // Append EOL (usually "\n") char
+            $str2 .= PHP_EOL;      // Equivalent to $str2 = $str2 . PHP_EOL
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Control Flow
+
+            ```php
+            <?php
+
+            $a = false;
+            if ($a) {
+                echo '1';
+            } else {
+                echo '2';
+            }
+
+            echo $a ? '1' : '2'; // Equivalent to the code above
+
+            if ($a == '1') {
+                echo '1';
+            } elseif ($a == '2' || $a == '3') {
+                echo '2';
+            }
+
+            while ($a) {
+                echo '1';
+            }
+
+            switch ($a) {
+                case '1':
+                    echo '1';
+                    break;
+                case '2':
+                case '3':
+                    echo '2';
+                    break;
+                default:
+                    die('Error'); // Print and exit
+                    break;
+            }
+
+            for ($i = 0; $i < 10; $i++) {
+                echo $i . '<br>'; // <br> will output a new line
+            }
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Superglobals
+
+            Predefined variables in PHP
+
+            ```php
+            <?php
+
+            // The query string should be ?name=xxxx&quantity=yyyy
+            // $_GET is an array of query string parameters
+
+            echo $_GET['name'];     // Fetch "xxxx" part
+            echo $_GET['quantity']; // Fetch "yyyy" part
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Superglobals
+
+            Predefined variables in PHP
+
+            - $_GET
+            - $_POST
+            - $_REQUEST
+            - $_FILES
+            - $_COOKIE
+            - $_SESSION
+            - $_SERVER
+            - $argc, $argv
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Format Variables
+
+            How to make outputted data beautiful?
+
+            ```php
+            // at15 is 0100 years old.
+            echo sprintf('%s is %03d years old.', 'at15', 100);
+
+            // 2016-04-17 13:33:16
+            echo date('Y-m-d H:i:s');
+
+            // Set timezone
+            date_default_timezone_set('Asia/Shanghai');
+            // 2016-04-17 21:33:16
+            echo date('Y-m-d H:i:s');
+
+            // 3,000.00
+            echo number_format(3000, 2);
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Something we forgot?
+
+            ```php
+            <?php
+            print_r(empty($a)); // true, $a is not defined
+            $a = '';
+            print_r(empty($a));        // true
+            print_r(empty(false));     // true
+            print_r(empty('false'));   // true
+            print_r(empty(0));         // true
+            print_r(empty('0'));       // true
+            print_r(empty(' '));       // false
+            print_r(empty(trim(' '));  // true
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## We have conquered the code!
+
+            Let's review the code!
+
+            - v1/order.html
+            - v1/process.php
+          </script>
+        </section>
+      </section>
+      <section id="v2">
+        <section>
+          <h3>What's next?</h3>
+          <p>Make the code more complex :)</p>
+          <a href="http://www.zhihu.com/question/35992354/answer/66488394">How to write unmaintainable PHP code?</a>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Let's Have a Look
+
+            v2/complete_order.php
+
+            ```php
+            <?php
+            // Set area data with an array
+            $areas = ['Area A', 'Area B', 'Area C', 'Area D'];
+            ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Ticket Ordering</title>
+            </head>
+            <body>
+            <h1>Ticket Ordering</h1>
+            <p>You are ordering tickets of the concert <em>Hello World</em>.</p>
+            <form method="POST" action="process.php">
+              <p>
+                <label>Name</label>
+                <input name="name" type="text" placeholder="Your Name">
+              </p>
+              <?php foreach ($areas as $i => $area): ?>
+              <p>
+                <?= $area ?><br>
+                <label>Quantity</label>
+                <input name="<?= "quantity[$i]" ?>" type="number" placeholder="Quantity" min="0" max="5" style="width: 100px;">
+              </p>
+              <?php endforeach; ?>
+              <button>Submit</button>
+            </form>
+            </body>
+            </html>
+
+            ```
+
+            http://localhost:8000/v2/complete_order.php
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Let's Have a Look
+
+            v2/process.php
+
+            ```php
+            <?php
+            $areas = ['Area A', 'Area B', 'Area C', 'Area D'];
+
+            if (empty($_POST['name'])) {
+                die('Name required');
+            }
+
+            if (!isset($_POST['quantity']) || !is_array($_POST['quantity'])) {
+                die('Quantity required');
+            }
+
+            // Fetch form data and process
+            $name = trim($_POST['name']);
+            $quantities = $_POST['quantity'];
+            for ($i = 0; $i < count($areas); ++$i) {
+                $quantities[$i] = intval($quantities[$i]);
+                if ($quantities[$i] > 5 || $quantities[$i] < 0) {
+                    die('Quantity should be between 0 and 5');
+                }
+            }
+
+            // Prepare data to store on our disk
+            $data = "Name: $name ";
+            $data .= "Tickets: " . implode($quantities, ',');
+            $data .= PHP_EOL;
+
+            // Open data.txt and write our data to this file
+            $result = @file_put_contents('data.txt', $data, FILE_APPEND);
+            // If the writing operation failed
+            if ($result === false) {
+                $error = error_get_last();
+                echo $error['message'] . '<br>';
+                die('Failed to write data into data.txt');
+            }
+
+            // Render HTML
+            ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Ticket Ordering</title>
+            </head>
+            <body>
+            <h1>Ticket Ordering</h1>
+            <p>Your order was created successfully.</p>
+            <ul>
+              <li>Name: <?= $name ?></li>
+              <li>Tickets:
+                <ul>
+                  <?php foreach ($areas as $i => $area): ?>
+                  <li><?= "$area: $quantities[$i] tickets" ?></li>
+                  <?php endforeach; ?>
+                </ul>
+              </li>
+            </ul>
+            </body>
+            </html>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Get Afraid?
+
+            Don't Cry! Let's conquer it!
+          </script>
+        </section>
+        <section>
+          <h3>POST Form?</h3>
+          <p>Form data are sent not from query string, but where?</p>
+          <p class="fragment">Open your developer tool!</p>
+          <img src="images/part4/form-data.png" class="fragment">
         </section>
       </section>
       <section>
