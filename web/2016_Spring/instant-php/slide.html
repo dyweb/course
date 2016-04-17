@@ -11,6 +11,9 @@
   <meta name="viewport"
   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
+  <!-- Bootstrap Theme -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
 
@@ -43,6 +46,17 @@
     blockquote > footer::before {
       content: '-- ';
     }
+    img.no-border {
+      border: none !important;
+      background: none !important;
+    }
+    table, table tr, table th {
+      color: #fff;
+    }
+    .reveal code,
+    .reveal pre {
+      font-family: 'Code Course Pro', Consolas, 'Curior New', 'Arial', monospace;
+    }
   </style>
 
 </head>
@@ -60,13 +74,354 @@
       <section>
         <h3>Contents</h3>
         <ul>
-          <li><a href="#/1">Why PHP</a></li>
+          <li><a href="#/why-php">Why PHP</a></li>
+          <li><a href="#/env">Environment</a></li>
           <li><a href="#/2">Version 1</a></li>
           <li><a href="#/3">Version 2</a></li>
           <li><a href="#/4">Version 3</a></li>
           <li><a href="#/5">Version 4</a></li>
           <li><a href="#/6">Homework</a></li>
         </ul>
+      </section>
+      <section id="why-php">
+          <section>
+            <h3>Why PHP?</h3>
+          </section>
+          <section>
+            <h3>What is PHP?</h3>
+            <div class="col-xs-9">
+              <br>
+              <ul>
+                <li>PHP: Hypertext Preprocessor</li>
+                <li>Personal Home Page</li>
+                <li>Server-side Scripting Language</li>
+              </ul>
+            </div>
+            <div class="col-xs-3">
+              <img class="no-border" src="images/part1/php-logo.png">
+              <img class="no-border" src="images/part1/elephpant.png">
+            </div>
+          </section>
+          <section>
+            <h3>Why PHP?</h3>
+            <ul>
+              <li>Fast</li>
+              <li>Flexible</li>
+              <li>Pragmatic</li>
+              <li>Powerful</li>
+              <li class="fragment">Easy to learn</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="fragment grow">THE BEST PROGRAMMING LANGUAGE</h2>
+          </section>
+          <section>
+            <h3>Usage of Server-side Programming Languages for Websites</h3>
+            <table style="font-size: 0.6em;">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>
+                    2010
+                    <br>1 Jan</td>
+                  <td>
+                    2011
+                    <br>1 Jan</td>
+                  <td>
+                    2012
+                    <br>1 Jan</td>
+                  <td>
+                    2013
+                    <br>1 Jan</td>
+                  <td>
+                    2014
+                    <br>1 Jan</td>
+                  <td>
+                    2015
+                    <br>1 Jan</td>
+                  <td>
+                    2016
+                    <br>1 Jan</td>
+                  <td>
+                    2016
+                    <br>17 Apr</td>
+                </tr>
+                <tr>
+                  <th><u>PHP</u></th>
+                  <td><u>72.5%</u></td>
+                  <td><u>75.3%</u></td>
+                  <td><u>77.3%</u></td>
+                  <td><u>78.7%</u></td>
+                  <td><u>81.6%</u></td>
+                  <td><u>82.0%</u></td>
+                  <td><u>81.7%</u></td>
+                  <td><u>82.3%</u></td>
+                </tr>
+                <tr>
+                  <th>ASP.NET</th>
+                  <td>24.4%</td>
+                  <td>23.4%</td>
+                  <td>21.7%</td>
+                  <td>20.2%</td>
+                  <td>18.2%</td>
+                  <td>17.1%</td>
+                  <td>16.0%</td>
+                  <td>15.7%</td>
+                </tr>
+                <tr>
+                  <th>Java</th>
+                  <td>4.0%</td>
+                  <td>3.8%</td>
+                  <td>4.0%</td>
+                  <td>4.1%</td>
+                  <td>2.7%</td>
+                  <td>2.8%</td>
+                  <td>3.0%</td>
+                  <td>2.7%</td>
+                </tr>
+                <tr>
+                  <th>static files</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>1.6%</td>
+                  <td>1.5%</td>
+                </tr>
+                <tr>
+                  <th>ColdFusion</th>
+                  <td></td>
+                  <td>1.3%</td>
+                  <td>1.2%</td>
+                  <td>1.1%</td>
+                  <td>0.8%</td>
+                  <td>0.7%</td>
+                  <td>0.7%</td>
+                  <td>0.7%</td>
+                </tr>
+                <tr>
+                  <th>Ruby</th>
+                  <td>0.5%</td>
+                  <td>0.5%</td>
+                  <td>0.6%</td>
+                  <td>0.5%</td>
+                  <td>0.4%</td>
+                  <td>0.6%</td>
+                  <td>0.6%</td>
+                  <td>0.6%</td>
+                </tr>
+                <tr>
+                  <th>Perl</th>
+                  <td></td>
+                  <td>1.1%</td>
+                  <td>1.0%</td>
+                  <td>0.8%</td>
+                  <td>0.6%</td>
+                  <td>0.5%</td>
+                  <td>0.5%</td>
+                  <td>0.5%</td>
+                </tr>
+                <tr>
+                  <th>JavaScript</th>
+                  <td></td>
+                  <td></td>
+                  <td>&lt;0.1%</td>
+                  <td>&lt;0.1%</td>
+                  <td>0.1%</td>
+                  <td>0.1%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                </tr>
+                <tr>
+                  <th>Python</th>
+                  <td>0.3%</td>
+                  <td>0.3%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                </tr>
+                <tr>
+                  <th>Erlang</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>0.1%</td>
+                  <td>0.1%</td>
+                  <td>0.1%</td>
+                </tr>
+                <tr>
+                  <td><strong>Miva Script</strong></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>0.1%</td>
+                  <td>&lt;0.1%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p><small><a href="http://w3techs.com/technologies/history_overview/programming_language/ms/y">http://w3techs.com/technologies/history_overview/programming_language/ms/y</a></small></p>
+          </section>
+          <section>
+            <h3>Why PHP?</h3>
+            <table>
+              <thead>
+              <tr>
+                <th></th>
+                <th style="width: 30%;">PHP</th>
+                <th style="width: 30%;">Java</th>
+                <th style="width: 30%;">Node.js</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Environment</th>
+                  <td>5 min</td>
+                  <td>1 hour</td>
+                  <td>5 min</td>
+                </tr>
+                <tr>
+                  <th>Hello World</th>
+                  <td>10 sec</td>
+                  <td>5 min</td>
+                  <td>1 min</td>
+                </tr>
+                <tr>
+                  <td><strong>Deploy</strong></td>
+                  <td>Just copy files</td>
+                  <td>Compile &amp; restart server</td>
+                  <td>Copy &amp; restart server</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>PHP Hello World</h3>
+            <p>hello.php</p>
+            <pre><code data-trim>
+              hello world
+            </code></pre>
+            <p class="fragment">Just one line!!</p>
+            <img class="fragment" src="images/part1/emoji_meng.jpeg">
+          </section>
+          <section>
+            <h3>PHP Hello World</h3>
+            <p>hello.php</p>
+            <pre><code data-trim>
+&lt;?php echo 'hello world'; ?>
+            </code></pre>
+            <p>Still one line with <code>&lt;?php</code> block!!</p>
+            <img class="fragment" src="images/part1/emoji_meng.jpeg">
+          </section>
+      </section>
+      <section id="env">
+        <section>
+          <h3>Set up environment</h3>
+          <ul>
+          <li>Vagrant / Docker</li>
+          <li>XAMPP</li>
+          <li>PHP CLI Server</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Vagrant</h3>
+          <p>See <a href="https://github.com/at15/lnmp">https://github.com/at15/lnmp</a></p>
+          <pre><code data-trim>
+vagrant init at15/lnmp
+vagrant up --provider virtualbox
+            </code></pre>
+        </section>
+        <section>
+          <h3>XAMPP</h3>
+          <p>Bundled with <em>Apache</em>, <em>PHP</em>, <em>MariaDB</em> &amp; <em>phpMyAdmin</em></p>
+          <p>Available in <em>Windows</em>, <em>Mac OS X</em> &amp; <em>Linux</em>
+          <p>See <a href="https://www.apachefriends.org/">https://www.apachefriends.org/</a></p>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Download XAMPP
+
+            https://www.apachefriends.org/download.html
+
+            - PHP 5.6/7.0 Preferred (Mainstream / Stable)
+            - 32 bit preferred
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Install XAMPP
+
+            - Click & Install
+            - Remember the directory where you put XAMPP
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Run XAMPP
+
+            - Run `<XAMPP DIR>/xampp-control.exe`
+            - Click `Start` in Apache and MySQL (MariaDB) row
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Test XAMPP
+
+            - Write a file ` <XAMPP>/htdocs/phpinfo.php `
+
+            ```php
+            <?php
+            // Display php environment settings
+            phpinfo();
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Mapping URL with physical files
+
+            - All the files that can be accessed from browsers are stored in <XAMPP Dir>/htdocs directory.
+
+            ![Path Mapping](images/part2/mapping.png)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Mapping URL with physical files
+
+            ### Examples
+
+| URL | Physical File |
+| --- | ------------- |
+| http://localhost/index.php | <XAMPP Dir>/htdocs/index.php |
+| http://localhost/dashboard/404.html | <XAMPP Dir>/htdocs/dashboard/404.html |
+| http://localhost/dashboard | <XAMPP Dir>/htdocs/dashboard/index.html |
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP CLI Server
+
+            Run the following command in your source folder
+
+            *(In Windows, you need to add the PHP bin folder into PATH variable)*
+
+            ```bash
+            php -S localhost:8000 -t ./
+            ```
+
+            All the files and folders under "./" are mapped to http://localhost:8000
+          </script>
+        </section>
       </section>
       <section>
         <h2>Q</h2>
