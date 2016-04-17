@@ -470,7 +470,7 @@ php -S localhost:8000 -t ./src/
         </section>
         <section data-markdown>
           <script type="text/template">
-            ## First Try
+            ## First Try (Cont.)
 
             Here is our form page (v1/order.html):
 
@@ -993,15 +993,15 @@ php -S localhost:8000 -t ./src/
             var_dump(count($a));             // 3
             var_dump(implode(',', $a));      // a,b,1
             var_dump(join(',', $a));         // a,b,1
-            var_dump(explode(',', 'a,b,c));  // [a, b, c]
+            var_dump(explode(',', 'a,b,c')); // [a, b, c]
 
             array_push($a, 1);
-            var_dump($a);                    // [a,b,1,1]
+            var_dump($a); // [a,b,1,1]
             $a[] = 2;
-            var_dump($a);                    // [a,b,1,1,2]
-            var_dump(in_array(2, $a);        // true
-            unset($a[4]);                    // Remove 2 from $a
-            var_dump($a);                    // [a,b,1,1]
+            var_dump($a); // [a,b,1,1,2]
+            var_dump(in_array(2, $a); // true
+            unset($a[4]); // Remove 2 from $a
+            var_dump($a); // [a,b,1,1]
             ```
           </script>
         </section>
@@ -1205,7 +1205,348 @@ php -S localhost:8000 -t ./src/
           </script>
         </section>
       </section>
-      <section>
+      <section id="v3">
+        <section data-markdown>
+          <script type="text/template">
+            ## What's next?
+
+            - Code becomes ugly?
+            - Reuse duplicate code?
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Cart
+
+            - Save item info for each user
+            - Implement CRUD
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## File Structure
+
+            - v3/include/function.php
+            - v3/add_item.php
+            - v3/remove_item.php
+            - v3/save_cart.php
+            - v3/cart.php
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## The world with "include"...
+
+            Code in each files become more clear!
+
+            v3/add_item.php
+
+            ```php
+            <?php
+            define('MY_SITE', 1);
+            require 'include/function.php';
+
+            // Form Validation
+            if (empty($_POST['name']) || empty(trim($_POST['name']))) {
+                die('Name required');
+            }
+
+            // Fetch name
+            $name = trim($_POST['name']);
+
+            // Check duplicate item
+            if (get_item($name) !== null) {
+                die('Item exists');
+            }
+
+            // Add it to the cart
+            add_item($name);
+
+            // Redirect to cart page
+            redirect('cart.php');
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## The world with "include"...
+
+            Code in each files become more clear!
+
+            v3/cart.php
+
+            ```php
+            <?php
+            define('MY_SITE', 1);
+            require 'include/function.php';
+
+            $cart = get_cart();
+            ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>My Cart</title>
+            </head>
+            <body>
+            <h1>My Cart</h1>
+            <p>Here is your cart.</p>
+
+            <!-- Cart Info -->
+            <form method="POST" action="save_cart.php">
+              <ul>
+                <?php foreach ($cart as $i => $item): ?>
+                <li>Name: <?= $item['name'] ?></li>
+                <li>Quantity:
+                  <input name="<?= "quantity[{$item['name']}]" ?>"
+                  type="number"
+                  value="<?= $item['quantity'] ?>">
+                </li>
+                <li>
+                  <a href="<?= 'remove_item.php?name=' . rawurlencode($item['name']) ?>">Remove</a>
+                </li>
+                <?php endforeach; ?>
+              </ul>
+              <button>Save</button>
+            </form>
+
+            <!-- Add Item Form -->
+            <form method="POST" action="add_item.php">
+              <h3>Add new item</h3>
+              <p>
+                <label>Name</label>
+                <input name="name" placeholder="Name">
+                <button>Add</button>
+              </p>
+            </form>
+            </body>
+            </html>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Constants
+
+            ```php
+            define('MY_SITE', 1); // OK
+
+            const MY_SITE2 = 1;   // OK
+
+            $a = MY_SITE;
+            var_dump(defined('MY_SITE'));  // true
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Include External File
+
+            ```php
+            <?php
+
+            include 'include/function.php';
+
+            include_once include/function.php';
+
+            require 'include/function.php';
+
+            require_once 'include/function.php';
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Function
+
+            ```php
+            <?php
+            function foo() {
+                echo 'foo';
+            }
+
+            function foo2($a, $b) {
+                echo $a . $b;
+            }
+
+            function foo3(Exception $e) {
+                echo $e->getMessage();
+            }
+
+            // Only Available in PHP 7
+            function foo4(int $a, string $b):string {
+                return strval($a) . $b;
+            }
+
+            // Available in PHP 5.6+
+            function foo5($a, ...$arg) {
+                return $a . join(',', $arg); // $arg is an array
+            }
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Strict Type (PHP 7)
+
+            ```php
+            <?php
+            declare(strict_types = 1);
+
+            function foo(int $a, string $b):string {
+              return strval($a) . $b;
+            }
+
+            echo foo(1, 'a'); // OK
+            echo foo('1', 'a'); // OK in non strict type mode, error in strict type mode
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Session
+
+            How to keep the data of each user separately?
+
+            - HTTP: Stateless
+            - Cookie: 4 KB Limit
+            - LocalStorage: Not using the best programming language
+
+            The choice: Session!
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Session (Cont.)
+
+            Fortunately, PHP has provided us a session implementation: $_SESSION
+
+            ```php
+            <?php
+            // Initialize Session
+            session_start();
+
+            if (isset($_SESSION['user_id'])) {
+                var_dump($_SESSION['user_id']);
+                unset($_SESSION['temp']); // Delete temp from session
+            } else {
+                $_SESSION['user_id'] = 1; // Store user_id in session
+                $_SESSION['temp'] = 1; // Store temp in session
+                echo 'You are now logged in.';
+            }
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Reference
+
+            In PHP, variables are passed by value or reference.
+
+            All the variables (including array) except objects are passed by value by default.
+
+            ```php
+            <?php
+            $a = 1;
+            $b = $a;
+            $b = 2;
+            var_dump($a); // 1
+            $c =& $a;
+            $c = 2;
+            var_dump($a); // 2
+
+            $arr1 = [1, 2, 3];
+            $arr2 = $arr1;
+            $arr2[0] = 4;
+            var_dump($arr1); // [1,2,3]
+            $arr3 =& $arr1;
+            $arr3[0] = 4;
+            var_dump($arr1); // [4,2,3]
+
+            $obj = new StdClass();
+            $obj->a = 'foo';
+            $obj2 = $obj;
+            $obj2->a = 'foo2';
+            var_dump($obj->a); // foo2
+            $obj3 =& $obj;
+            $obj3->a = 'foo3';
+            var_dump($obj->a); // foo3
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Reference (Cont.)
+
+            Pay attention to the situation in "foreach"
+
+            ```php
+            <?php
+            $arr = [1, 2, 3, 4];
+            foreach ($arr as $val) {
+                $val += 1;
+            }
+            var_dump($arr); // [1,2,3,4]
+
+            foreach ($arr as &$val2) {
+                $val2 += 1;
+            }
+            var_dump($arr); // [2,3,4,5]
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Redirect
+
+            Add "Location" header to tell the browser to redirect to other pages
+
+            ```php
+            <?php
+            header('Location: cart.php');
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Assignment (II)
+
+            The output of the following code looks strange. Try to figure out why.
+
+            ```php
+            <?php
+            $array = ['a', 'b', 'c', 'd'];
+            $array2 = [1, 2, 3, 4];
+            foreach ($array as &$item) {
+                echo $item . PHP_EOL;
+            }
+
+            foreach ($array2 as $item) {
+                echo $item . PHP_EOL;
+            }
+
+            echo implode($array, ',') . PHP_EOL;    // Outputs a,b,c,4
+            echo implode($array2, ',') . PHP_EOL;   // Outputs 1,2,3,4
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Assignment (III)
+
+            - Implement simple login logic
+            - 4 files needed: index.php, private.php, login.php, logout.php
+            - Only a user who has logged in has access to private.php
+            - Use Session to finish this assignment
+          </script>
+        </section>
+      </section>
+      <section id="v4">
+
+      </section>
+      <section id="assignment">
         <h2>Q</h2>
       </section>
     </div>
