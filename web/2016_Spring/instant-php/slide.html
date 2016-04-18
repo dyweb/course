@@ -1,0 +1,2145 @@
+<html>
+<head>
+  <title>2016 Spring Web | Instant PHP by ComMouse</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Dongyue Web Studio 2016 Spring Web Instant PHP by ComMouse">
+  <meta name="author" content="arrowrowe">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <!-- Bootstrap Theme -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+  <!-- Printing and PDF exports -->
+  <!-- FIXME: this does not work properly -->
+  <script>
+    var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+    var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+    <script>alert('Please use Chrome');</script>
+  <![endif]-->
+
+  <style>
+    blockquote {
+      text-align: left;
+    }
+    blockquote > footer {
+      text-align: right;
+    }
+    blockquote > footer::before {
+      content: '-- ';
+    }
+    img.no-border {
+      border: none !important;
+      background: none !important;
+    }
+    table, table tr, table th {
+      color: #fff;
+    }
+    .reveal code,
+    .reveal pre {
+      font-family: 'Source Code Pro', Consolas, 'Curior New', 'Arial', monospace;
+    }
+    .reveal .form-control {
+      font-size: 25px;
+      height: 1.8em;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-background="images/night_sky.jpg" style="background-color:rgba(0,0,0,0.4)">
+        <h2>Instant PHP</h2>
+        <h4>2016 Spring Dongyue Web Studio</h4>
+        <p>
+          <small>by <a href="https://github.com/ComMouse" target="_blank">ComMouse</a></small>
+        </p>
+        <p><small>(background image by anonymous)</small></p>
+      </section>
+      <section>
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#/why-php">Why PHP</a></li>
+          <li><a href="#/env">Environment</a></li>
+          <li><a href="#/v1">First Try: Ticket Order</a></li>
+          <li><a href="#/v2">Second Try: Ticket Order+</a></li>
+          <li><a href="#/v3">Third Try: Cart</a></li>
+          <li><a href="#/v4">Another Try: Cart Component</a></li>
+          <li><a href="#/assignment">Assignment</a></li>
+        </ul>
+      </section>
+      <section id="why-php">
+          <section>
+            <h3>Why PHP?</h3>
+          </section>
+          <section>
+            <h3>What is PHP?</h3>
+            <div class="col-xs-9">
+              <br>
+              <ul>
+                <li>PHP: Hypertext Preprocessor</li>
+                <li>Personal Home Page</li>
+                <li>Server-side Scripting Language</li>
+              </ul>
+            </div>
+            <div class="col-xs-3">
+              <img class="no-border" src="images/part1/php-logo.png">
+              <img class="no-border" src="images/part1/elephpant.png">
+            </div>
+          </section>
+          <section>
+            <h3>Why PHP?</h3>
+            <ul>
+              <li>Fast</li>
+              <li>Flexible</li>
+              <li>Pragmatic</li>
+              <li>Powerful</li>
+              <li class="fragment">Easy to learn</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="fragment grow">THE BEST PROGRAMMING LANGUAGE</h2>
+          </section>
+          <section>
+            <h3>Usage of Server-side Programming Languages for Websites</h3>
+            <table style="font-size: 0.6em;">
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>
+                    2010
+                    <br>1 Jan</td>
+                  <td>
+                    2011
+                    <br>1 Jan</td>
+                  <td>
+                    2012
+                    <br>1 Jan</td>
+                  <td>
+                    2013
+                    <br>1 Jan</td>
+                  <td>
+                    2014
+                    <br>1 Jan</td>
+                  <td>
+                    2015
+                    <br>1 Jan</td>
+                  <td>
+                    2016
+                    <br>1 Jan</td>
+                  <td>
+                    2016
+                    <br>17 Apr</td>
+                </tr>
+                <tr>
+                  <th><u>PHP</u></th>
+                  <td><u>72.5%</u></td>
+                  <td><u>75.3%</u></td>
+                  <td><u>77.3%</u></td>
+                  <td><u>78.7%</u></td>
+                  <td><u>81.6%</u></td>
+                  <td><u>82.0%</u></td>
+                  <td><u>81.7%</u></td>
+                  <td><u>82.3%</u></td>
+                </tr>
+                <tr>
+                  <th>ASP.NET</th>
+                  <td>24.4%</td>
+                  <td>23.4%</td>
+                  <td>21.7%</td>
+                  <td>20.2%</td>
+                  <td>18.2%</td>
+                  <td>17.1%</td>
+                  <td>16.0%</td>
+                  <td>15.7%</td>
+                </tr>
+                <tr>
+                  <th>Java</th>
+                  <td>4.0%</td>
+                  <td>3.8%</td>
+                  <td>4.0%</td>
+                  <td>4.1%</td>
+                  <td>2.7%</td>
+                  <td>2.8%</td>
+                  <td>3.0%</td>
+                  <td>2.7%</td>
+                </tr>
+                <tr>
+                  <th>static files</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>1.6%</td>
+                  <td>1.5%</td>
+                </tr>
+                <tr>
+                  <th>ColdFusion</th>
+                  <td></td>
+                  <td>1.3%</td>
+                  <td>1.2%</td>
+                  <td>1.1%</td>
+                  <td>0.8%</td>
+                  <td>0.7%</td>
+                  <td>0.7%</td>
+                  <td>0.7%</td>
+                </tr>
+                <tr>
+                  <th>Ruby</th>
+                  <td>0.5%</td>
+                  <td>0.5%</td>
+                  <td>0.6%</td>
+                  <td>0.5%</td>
+                  <td>0.4%</td>
+                  <td>0.6%</td>
+                  <td>0.6%</td>
+                  <td>0.6%</td>
+                </tr>
+                <tr>
+                  <th>Perl</th>
+                  <td></td>
+                  <td>1.1%</td>
+                  <td>1.0%</td>
+                  <td>0.8%</td>
+                  <td>0.6%</td>
+                  <td>0.5%</td>
+                  <td>0.5%</td>
+                  <td>0.5%</td>
+                </tr>
+                <tr>
+                  <th>JavaScript</th>
+                  <td></td>
+                  <td></td>
+                  <td>&lt;0.1%</td>
+                  <td>&lt;0.1%</td>
+                  <td>0.1%</td>
+                  <td>0.1%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                </tr>
+                <tr>
+                  <th>Python</th>
+                  <td>0.3%</td>
+                  <td>0.3%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                  <td>0.2%</td>
+                </tr>
+                <tr>
+                  <th>Erlang</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>0.1%</td>
+                  <td>0.1%</td>
+                  <td>0.1%</td>
+                </tr>
+                <tr>
+                  <td><strong>Miva Script</strong></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>0.1%</td>
+                  <td>&lt;0.1%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p><small><a href="http://w3techs.com/technologies/history_overview/programming_language/ms/y">http://w3techs.com/technologies/history_overview/programming_language/ms/y</a></small></p>
+          </section>
+          <section>
+            <h3>Why PHP?</h3>
+            <table>
+              <thead>
+              <tr>
+                <th></th>
+                <th style="width: 30%;">PHP</th>
+                <th style="width: 30%;">Java</th>
+                <th style="width: 30%;">Node.js</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Environment</th>
+                  <td>5 min</td>
+                  <td>1 hour</td>
+                  <td>5 min</td>
+                </tr>
+                <tr>
+                  <th>Hello World</th>
+                  <td>10 sec</td>
+                  <td>5 min</td>
+                  <td>1 min</td>
+                </tr>
+                <tr>
+                  <td><strong>Deploy</strong></td>
+                  <td>Just copy files</td>
+                  <td>Compile &amp; restart server</td>
+                  <td>Copy &amp; restart server</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>PHP Hello World</h3>
+            <p>hello.php</p>
+            <pre><code data-trim>
+              hello world
+            </code></pre>
+            <p class="fragment">Just one line!!</p>
+            <img class="fragment" src="images/part1/emoji-meng.jpeg">
+          </section>
+          <section>
+            <h3>PHP Hello World</h3>
+            <p>hello.php</p>
+            <pre><code data-trim>
+&lt;?php echo 'hello world'; ?>
+            </code></pre>
+            <p>Still one line with <code>&lt;?php</code> block!!</p>
+            <img class="fragment" src="images/part1/emoji-meng.jpeg">
+          </section>
+      </section>
+      <section id="env">
+        <section>
+          <h3>Set up environment</h3>
+          <ul>
+          <li>Vagrant / Docker</li>
+          <li>XAMPP</li>
+          <li>PHP CLI Server</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Vagrant</h3>
+          <p>See <a href="https://github.com/at15/lnmp">https://github.com/at15/lnmp</a></p>
+          <pre><code data-trim>
+vagrant init at15/lnmp
+vagrant up --provider virtualbox
+            </code></pre>
+        </section>
+        <section>
+          <h3>XAMPP</h3>
+          <p>Bundled with <em>Apache</em>, <em>PHP</em>, <em>MariaDB</em> &amp; <em>phpMyAdmin</em></p>
+          <p>Available in <em>Windows</em>, <em>Mac OS X</em> &amp; <em>Linux</em>
+          <p>See <a href="https://www.apachefriends.org/">https://www.apachefriends.org/</a></p>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Download XAMPP
+
+            https://www.apachefriends.org/download.html
+
+            - PHP 5.6/7.0 Preferred (Mainstream / Stable)
+            - 32 bit preferred
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Install XAMPP
+
+            - Click & Install
+            - Remember the directory where you put XAMPP
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Run XAMPP
+
+            - Run `<XAMPP DIR>/xampp-control.exe`
+            - Click `Start` in Apache and MySQL (MariaDB) row
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Test XAMPP
+
+            - Write a file ` <XAMPP>/htdocs/phpinfo.php `
+
+            ```php
+            <?php
+            // Display php environment settings
+            phpinfo();
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Mapping URL with physical files
+
+            - All the files that can be accessed from browsers are stored in <XAMPP Dir>/htdocs directory.
+
+            ![Path Mapping](images/part2/mapping.png)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Mapping URL with physical files
+
+            ### Examples
+
+| URL | Physical File |
+| --- | ------------- |
+| http://localhost/index.php | <XAMPP Dir>/htdocs/index.php |
+| http://localhost/dashboard/404.html | <XAMPP Dir>/htdocs/dashboard/404.html |
+| http://localhost/dashboard | <XAMPP Dir>/htdocs/dashboard/index.html |
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP CLI Server
+
+            Run the following command in your source folder
+
+            *(In Windows, you need to add the PHP bin folder into PATH variable)*
+
+            ```bash
+            php -S localhost:8000 -t ./
+            ```
+
+            All the files and folders under "./" are mapped to http://localhost:8000
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Server API
+
+            ![Request Cycle](images/part2/request-cycle.png)
+
+            - CGI
+            - FastCGI (PHP-FPM)
+            - Apache Module
+            - ISAPI
+            - CLI
+          </script>
+        </section>
+      </section>
+      <section id="v1">
+        <section data-markdown>
+          <script type="text/template">
+            ## First Try
+
+            Before we start, clone the repo and find the code files.
+
+            Here is one way to run a server:
+            ```bash
+git clone https://github.com/dyweb/course.git dyweb-course
+cd dyweb-course/web/2016_Spring/instant-php
+php -S localhost:8000 -t ./src/
+# PHP 7.0.4 Development Server started at Sun Apr 17 19:26:52 2016
+# Listening on http://localhost:8000
+# Document root is D:\Web\dyweb-course\course\web\2016-spring\instant-php\src
+# Press Ctrl-C to quit.
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## First Try
+
+            Before we start, let's do some funny things!
+
+            [HERE WE GO](https://learnxinyminutes.com/docs/zh-cn/php-cn/)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## First Try (Cont.)
+
+            Here is our form page (v1/order.html):
+
+            ```html
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Ticket Ordering</title>
+            </head>
+            <body>
+            <h1>Ticket Ordering</h1>
+            <p>You are ordering tickets of the concert <em>Hello World</em>.</p>
+            <form method="GET" action="process.php">
+              <p>
+                <label>Name</label>
+                <input name="name" type="text" placeholder="Your Name">
+              </p>
+              <p>
+                <label>Ticket Quantity</label>
+                <input name="quantity" type="number" placeholder="Quantity" min="0" max="5" style="width: 100px;">
+              </p>
+              <button>Submit</button>
+            </form>
+            </body>
+            </html>
+            ```
+
+            [Visit from our tiny server](http://localhost:8000/v1/order.html)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Form
+
+            ```html
+            <form method="GET" action="process.php"></form>
+            ```
+
+            - We use form to submit data to a server
+            - *method*: GET / POST
+            - *action*: The page to handle the submission request
+          </script>
+        </section>
+        <section>
+          <h3>Form Controls</h3>
+          <pre><code data-trim>&lt;input name="username" type="text" placeholder="User Name"&gt;</code></pre>
+          <input class="form-control center-block" name="username" type="text" placeholder="User Name" style="width: 20vw;">
+          <pre><code data-trim>&lt;input name="quantity" type="number" placeholder="Quantity(1-5)" min="1" max="5" step="1"&gt;</code></pre>
+          <input class="form-control center-block" name="quantity" type="number" placeholder="Quantity(1-5)" min="1" max="5" step="1" style="width: 20vw;">
+          <pre><code data-trim>&lt;input name="password" type="password" placeholder="Password"&gt;</code></pre>
+          <input class="form-control center-block" name="password" type="password" placeholder="Password" style="width: 20vw;">
+        </section>
+        <section>
+          <h3>Form Controls</h3>
+          <p>Checkbox</p>
+          <label class="center-block"><input class="form-control" name="checked" type="checkbox" style="width: 2em; display: inline;">I'm cute</label>
+          <p>Drop List</p>
+          <select name="droplist" class="form-control center-block" style="width: 20vw;">
+            <option>Who is the cutest?</option>
+            <option>at15</option>
+            <option>arrowrowe</option>
+            <option>swaylq</option>
+            <option>XLuke</option>
+            <option>gaocegege</option>
+          </select>
+          <p>Text Area</p>
+          <textarea name="intro" class="form-control center-block" style="width: 20vw; min-height: 5em;" placeholder="Introduction..."></textarea>
+          <p>Tips: <kbd>View Source</kbd> <em>to find out how these elements work!</em></p>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Where to receive data?
+
+            Check the address bar!
+
+            ```
+            http://localhost:8000/v1/process.php?name=at15&quantity=3
+            ```
+
+            - The data are appended after the <code>?</code> character
+            - Also called <em>Query String</em>
+            - <em>GET</em> will put form data into after <code>?</code>
+
+            <img src="images/part3/url.png" style="background-color: #fff;">
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Handle data at server side
+
+            Here is our "v1/process.php"
+
+            ```php
+            <?php
+            // Set timezone to UTC+8
+            date_default_timezone_set('Asia/Shanghai');
+
+            // Fetch form data from query string
+            $name = empty($_GET['name']) ? '' : $_GET['name'];
+            $quantity = empty($_GET['quantity']) ? '' : $_GET['quantity'];
+
+            // If the form is submitted
+            if ($name == '' || $quantity == '') {
+                die('Name and quantity required');
+            }
+
+            // Process order result
+            $price = 3.00;
+            $total_price = $quantity * $price;
+
+            // Output result
+            ?>
+            <h1>Ticket Ordering</h1>
+            <p>Your order was created successfully.</p>
+            <ul>
+              <li>Name: <?php echo $name; ?></li>
+              <li>Tickets: <?php echo $quantity; ?></li>
+              <li>Amount: $<?php echo number_format($total_price, 2) ?></li>
+              <li>Ordered at: <?php echo date('Y-m-d H:i:s') ?></li>
+              <li>Order No: <?php echo sprintf('%010d', $quantity * 10 + 1) ?></li>
+            </ul>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP is HTML?
+
+            - We can write HTML in PHP, and it can be printed correctly!
+            - We have to write PHP script elsewhere.
+
+            ```php
+            <!-- Yes! This is a php file! -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Hello</title>
+            </head>
+            <body>
+              <p>Hello, <em>ComMouse</em>!</p>
+            </body>
+            </html>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Tag!
+
+            Where we write PHP code
+            ```php
+            <!-- Write some code in PHP block -->
+            <?php $foo = 'at15'; ?>
+            <!-- And render our HTML correctly! -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Hello</title>
+            </head>
+            <body>
+              <p>Hello, <em>ComMouse</em>!</p>
+              <!-- Print our variable defined in PHP block -->
+              <p>foo is <?php echo $foo; ?></p>
+            </body>
+            </html>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Variables
+
+            ```php
+            <?php // Don't forget it!
+
+            $var = 1; // I'm a variable!
+
+            $var = 'a'; // I can have an arbitrary type!
+
+            $var = $foo; // ERROR: $foo is not defined!
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Variables (Cont.)
+
+            ```php
+            <?php
+
+            $a = 1;
+            $var = 'a';
+            echo $$var; // 1
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Comments
+
+            ```php
+            <?php
+
+            // I'm a comment
+
+            /*
+             * I'm a multi-line comment
+             */
+
+            # I'm also a comment (not recommended)
+
+            // Comment Before Closing Tag ?> Here is not in a comment.
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## String
+
+            ```php
+            <?php
+
+            $str = 'haha';         // I'm a string
+            $str2 = $str . 'fufu'; // Use `.` to concatenate strings
+
+            // Output hahafufu
+            echo $str2;
+
+            $foo = 1;
+            $str2 = 'haha' . $foo; // $foo will be converted to a string
+
+            // Output "haha1"
+            echo $str2;
+
+            // Append EOL (usually "\n") char
+            $str2 .= PHP_EOL;      // Equivalent to $str2 = $str2 . PHP_EOL
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Control Flow
+
+            ```php
+            <?php
+
+            $a = false;
+            if ($a) {
+                echo '1';
+            } else {
+                echo '2';
+            }
+
+            echo $a ? '1' : '2'; // Equivalent to the code above
+
+            if ($a == '1') {
+                echo '1';
+            } elseif ($a == '2' || $a == '3') {
+                echo '2';
+            }
+
+            while ($a) {
+                echo '1';
+            }
+
+            switch ($a) {
+                case '1':
+                    echo '1';
+                    break;
+                case '2':
+                case '3':
+                    echo '2';
+                    break;
+                default:
+                    die('Error'); // Print and exit
+                    break;
+            }
+
+            for ($i = 0; $i < 10; $i++) {
+                echo $i . '<br>'; // <br> will output a new line
+            }
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Superglobals
+
+            Predefined variables in PHP
+
+            ```php
+            <?php
+
+            // The query string should be ?name=xxxx&quantity=yyyy
+            // $_GET is an array of query string parameters
+
+            echo $_GET['name'];     // Fetch "xxxx" part
+            echo $_GET['quantity']; // Fetch "yyyy" part
+
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Superglobals
+
+            Predefined variables in PHP
+
+            - $_GET
+            - $_POST
+            - $_REQUEST
+            - $_FILES
+            - $_COOKIE
+            - $_SESSION
+            - $_SERVER
+            - $argc, $argv
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Format Variables
+
+            How to make outputted data beautiful?
+
+            ```php
+            <?php
+            // at15 is 0100 years old.
+            echo sprintf('%s is %03d years old.', 'at15', 100);
+
+            // 2016-04-17 13:33:16
+            echo date('Y-m-d H:i:s');
+
+            // Set timezone
+            date_default_timezone_set('Asia/Shanghai');
+            // 2016-04-17 21:33:16
+            echo date('Y-m-d H:i:s');
+
+            // 3,000.00
+            echo number_format(3000, 2);
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Something we forgot?
+
+            ```php
+            <?php
+            var_dump(empty($a)); // true, $a is not defined
+            $a = '';
+            var_dump(empty($a));        // true
+            var_dump(empty(false));     // true
+            var_dump(empty('false'));   // false
+            var_dump(empty(0));         // true
+            var_dump(empty('0'));       // true
+            var_dump(empty(' '));       // false
+            var_dump(empty(trim(' '))); // true
+            var_dump(empty([]));        // true
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## We have conquered the code!
+
+            Let's review the code!
+
+            - v1/order.html
+            - v1/process.php
+          </script>
+        </section>
+      </section>
+      <section id="v2">
+        <section>
+          <h2>What's next?</h2>
+          <p>Make the code more complex :)</p>
+          <a href="http://www.zhihu.com/question/35992354/answer/66488394">How to write unmaintainable PHP code?</a>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Let's Have a Look
+
+            v2/complete_order.php
+
+            ```php
+            <?php
+            // Set area data with an array
+            $areas = ['Area A', 'Area B', 'Area C', 'Area D'];
+            ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Ticket Ordering</title>
+            </head>
+            <body>
+            <h1>Ticket Ordering</h1>
+            <p>You are ordering tickets of the concert <em>Hello World</em>.</p>
+            <form method="POST" action="process.php">
+              <p>
+                <label>Name</label>
+                <input name="name" type="text" placeholder="Your Name">
+              </p>
+              <?php foreach ($areas as $i => $area): ?>
+              <p>
+                <?= $area ?><br>
+                <label>Quantity</label>
+                <input name="<?= "quantity[$i]" ?>" type="number" placeholder="Quantity" min="0" max="5" style="width: 100px;">
+              </p>
+              <?php endforeach; ?>
+              <button>Submit</button>
+            </form>
+            </body>
+            </html>
+
+            ```
+
+            http://localhost:8000/v2/complete_order.php
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Let's Have a Look (Cont.)
+
+            v2/process.php
+
+            ```php
+            <?php
+            $areas = ['Area A', 'Area B', 'Area C', 'Area D'];
+
+            if (empty($_POST['name'])) {
+                die('Name required');
+            }
+
+            if (!isset($_POST['quantity']) || !is_array($_POST['quantity'])) {
+                die('Quantity required');
+            }
+
+            // Fetch form data and process
+            $name = trim($_POST['name']);
+            $quantities = $_POST['quantity'];
+            for ($i = 0; $i < count($areas); ++$i) {
+                $quantities[$i] = intval($quantities[$i]);
+                if ($quantities[$i] > 5 || $quantities[$i] < 0) {
+                    die('Quantity should be between 0 and 5');
+                }
+            }
+
+            // Prepare data to store on our disk
+            $data = "Name: $name ";
+            $data .= "Tickets: " . implode($quantities, ',');
+            $data .= PHP_EOL;
+
+            // Open data.txt and write our data to this file
+            $result = @file_put_contents('data.txt', $data, FILE_APPEND);
+            // If the writing operation failed
+            if ($result === false) {
+                $error = error_get_last();
+                echo $error['message'] . '<br>';
+                die('Failed to write data into data.txt');
+            }
+
+            // Render HTML
+            ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Ticket Ordering</title>
+            </head>
+            <body>
+            <h1>Ticket Ordering</h1>
+            <p>Your order was created successfully.</p>
+            <ul>
+              <li>Name: <?= $name ?></li>
+              <li>Tickets:
+                <ul>
+                  <?php foreach ($areas as $i => $area): ?>
+                  <li><?= "$area: $quantities[$i] tickets" ?></li>
+                  <?php endforeach; ?>
+                </ul>
+              </li>
+            </ul>
+            </body>
+            </html>
+            ```
+            http://localhost:8000/v2/process.php
+
+            *(Visiting this page directly would fail...)*
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Get Afraid?
+
+            Don't Cry! Let's conquer it!
+          </script>
+        </section>
+        <section>
+          <h3>POST Form?</h3>
+          <p>Form data are sent not from query string, but where?</p>
+          <p class="fragment">Open your developer tool!</p>
+          <img src="images/part4/form-data.png" class="fragment">
+        </section>
+        <section>
+          <h3>POST Form? (Cont.)</h3>
+          <p>quantity[0], quantity[1], quantity[2], quantity[3]?</p>
+          <p class="fragment">PHP will parse them as:</p>
+          <ul class="fragment">
+            <li>$_POST['quantity'][0]</li>
+            <li>$_POST['quantity'][1]</li>
+            <li>$_POST['quantity'][2]</li>
+            <li>$_POST['quantity'][3]</li>
+          </ul>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Array
+
+            ```php
+            <?php
+            $a = ['a', 'b', 1];
+            $b = array('a', 'b', 1);  // Equivalent
+            var_dump(count($a));      // length: 3
+            var_dump(implode(',', $a));      // a,b,1
+            var_dump(join(',', $a));         // a,b,1
+            var_dump(explode(',', 'a,b,c')); // [a, b, c]
+
+            array_push($a, 1);
+            var_dump($a); // [a,b,1,1]
+            $a[] = 2;
+            var_dump($a); // [a,b,1,1,2]
+
+            var_dump(in_array(2, $a); // true
+
+            unset($a[4]); // Remove 2 from $a
+            var_dump($a); // [a,b,1,1]
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## foreach?
+
+            ```php
+            <?php
+            $arr = [
+                'haha' => 'foo',
+                1 => 'goo',
+                'hoo'
+            ];
+
+            foreach ($arr as $key => $value) {
+                echo "$key $value<br>";
+            }
+            // Output:
+            // haha foo
+            // 1 goo
+            // 2 hoo
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Double-quoted string?
+
+            ```php
+            <?php
+            $a = 1;
+            $b = 'haha';
+            $c = ['a', 'b', 'c'];
+
+            // Print 1 haha a
+            echo "$a $b {$c[0]}";
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## <?=
+
+            ```php
+            <?= 'a' ?>
+            <!-- Equivalent -->
+            <?php echo 'a' ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Haha!
+
+            The "v2/complete_order.php" has been conquered!
+
+            Let's move on...
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Validation
+
+            ```php
+            <?php
+            var_dump(1 == '1');    // true
+            var_dump(1 === '1');   // false
+            var_dump(0 <=> 2);     // -1 (PHP 7 only)
+            var_dump(2 <=> 2);     // 0 (PHP 7 only)
+            var_dump(2 <=> 0);     // 1 (PHP 7 only)
+
+            $foo = isset($a) ? $a : '';  // $a is not defined, so $foo = ''
+            $foo2 = $a ?? '';     // Equivalent (PHP 7 only)
+
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Validation (Cont.)
+
+            ```php
+            <?php
+            var_dump(is_int('1'));   // false
+            var_dump(is_bool(1));    // false
+            var_dump(intval('1'));   // 1
+            var_dump(intval('foo')); // 0
+
+            var_dump(filter_var('0755', FILTER_VALIDATE_INT));      // 755
+            var_dump(filter_var('a@b.com', FILTER_VALIDATE_EMAIL)); // a@b.com
+            var_dump(filter_var('abc', FILTER_VALIDATE_EMAIL));     // false
+
+            var_dump(preg_match('/^0?1[3578]\d{9}$/', '13301234567')); // 1
+
+            var_dump(isset($a));     // false
+            $a = 1;
+            var_dump(isset($a));     // true
+            $b = [0, 1];
+            var_dump(isset($b[2]));  // false
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Store Data
+
+            ```php
+            <?php
+            $file = 'test.txt';
+            $content = 'hahahaha';
+            file_put_contents($file, $content);
+
+            echo file_get_contents($file);
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Store Data (Cont.)
+
+            - Another Way
+              - fopen()
+              - fwrite()
+              - fread()
+              - fclose()
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Error handling
+
+            - Operator @
+
+            ```php
+            <?php
+            $file = 'http://test.txt'; // Invalid file
+            $content = 'hahahaha';
+            // An error occurred
+            file_put_contents($file, $content);
+            ```
+
+            ```php
+            <?php
+            $file = 'http://test.txt'; // Invalid file
+            $content = 'hahahaha';
+
+            // An error was depressed
+            $result = @file_put_contents($file, $content);
+            var_dump($result); // false
+            var_dump(error_get_last());  // Get error info
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Error handling (Cont.)
+
+            ### Better Handling
+            - Register error handler: `set_error_handler()`
+            - Catch exceptions: `try ... catch ... finally`
+              ```php
+              <?php
+              try {
+                  throw new Exception('error!!');
+              } catch (Exception $e) {
+                  echo $e->getMessage();
+              }
+              ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Serialization
+
+            - serialize(), unserialize()
+            - explode(), implode()
+            - json_encode(), json_decode()
+
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Congratulations
+
+            We have conquered the second version!
+          </script>
+        </section>
+        <section id="ass1" data-markdown>
+          <script type="text/template">
+            ## Assignment (I)
+
+            Finish a simple To-do List application
+            - Only one file "todo.php" is enough
+                - Multiple files are also ok
+            - Try to implement displaying, creating, editing & deleting of to-do items
+            - No JS & CSS needed
+                - Just focus on PHP coding
+            - (Advanced) Try to add file uploading in item creating form
+                - *Tips: Use $_FILES superglobal*
+          </script>
+        </section>
+      </section>
+      <section id="v3">
+        <section data-markdown>
+          <script type="text/template">
+            ## What's next?
+
+            - Code becomes ugly?
+            - Reuse duplicate code?
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Cart
+
+            - Save item info for each user
+            - Implement CRUD
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## File Structure
+
+            - v3/include/function.php
+            - v3/add_item.php
+            - v3/remove_item.php
+            - v3/save_cart.php
+            - v3/cart.php
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## The world with "include"...
+
+            Code in each files become more clear!
+
+            v3/add_item.php
+
+            ```php
+            <?php
+            define('MY_SITE', 1);
+            require 'include/function.php';
+
+            // Form Validation
+            if (empty($_POST['name']) || empty(trim($_POST['name']))) {
+                die('Name required');
+            }
+
+            // Fetch name
+            $name = trim($_POST['name']);
+
+            // Check duplicate item
+            if (get_item($name) !== null) {
+                die('Item exists');
+            }
+
+            // Add it to the cart
+            add_item($name);
+
+            // Redirect to cart page
+            redirect('cart.php');
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## The world with "include"...
+
+            Code in each files become more clear!
+
+            v3/cart.php
+
+            ```php
+            <?php
+            define('MY_SITE', 1);
+            require 'include/function.php';
+
+            $cart = get_cart();
+            ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>My Cart</title>
+            </head>
+            <body>
+            <h1>My Cart</h1>
+            <p>Here is your cart.</p>
+
+            <!-- Cart Info -->
+            <form method="POST" action="save_cart.php">
+              <ul>
+                <?php foreach ($cart as $i => $item): ?>
+                <li>Name: <?= $item['name'] ?></li>
+                <li>Quantity:
+                  <input name="<?= "quantity[{$item['name']}]" ?>"
+                  type="number"
+                  value="<?= $item['quantity'] ?>">
+                </li>
+                <li>
+                  <a href="<?= 'remove_item.php?name=' . rawurlencode($item['name']) ?>">Remove</a>
+                </li>
+                <?php endforeach; ?>
+              </ul>
+              <button>Save</button>
+            </form>
+
+            <!-- Add Item Form -->
+            <form method="POST" action="add_item.php">
+              <h3>Add new item</h3>
+              <p>
+                <label>Name</label>
+                <input name="name" placeholder="Name">
+                <button>Add</button>
+              </p>
+            </form>
+            </body>
+            </html>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Constants
+
+            ```php
+            <?php
+            define('MY_SITE', 1); // OK
+
+            const MY_SITE2 = 1;   // OK
+
+            $a = MY_SITE;
+            var_dump(defined('MY_SITE'));  // true
+            var_dump(defined('MY_SITE2')); // true
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Include External File
+
+            ```php
+            <?php
+
+            include 'include/function.php';
+
+            include_once include/function.php';
+
+            require 'include/function.php';
+
+            require_once 'include/function.php';
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Function
+
+            ```php
+            <?php
+            function foo() {
+                echo 'foo';
+            }
+
+            function foo2($a, $b) {
+                echo $a . $b;
+            }
+
+            function foo3(Exception $e) {
+                echo $e->getMessage();
+            }
+
+            // Only Available in PHP 7
+            function foo4(int $a, string $b):string {
+                return strval($a) . $b;
+            }
+
+            // Available in PHP 5.6+
+            function foo5($a, ...$arg) {
+                return $a . join(',', $arg); // $arg is an array
+            }
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Strict Type (PHP 7)
+
+            ```php
+            <?php
+            declare(strict_types = 1);
+
+            function foo(int $a, string $b):string {
+              return strval($a) . $b;
+            }
+
+            echo foo(1, 'a'); // OK
+            echo foo('1', 'a'); // OK in non strict type mode, error in strict type mode
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Anonymous Function
+
+            ```php
+            <?php
+            function foo($func) {
+                $func(1);
+            }
+
+            // Lambda
+            foo(function ($str) {
+                echo $str . '<br>';
+            });
+
+            $arr = ['a', 'b', 'c', 'd'];
+            // Closure
+            foo(function ($index) use ($arr) {
+                echo $arr[$index] . '<br>';
+            });
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Session
+
+            How to keep the data of each user separately?
+
+            ### Client Side
+            - Cookie: 4 KB Limit
+            - LocalStorage: Not using the best programming language
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Session (Cont.)
+
+            How to keep the data of each user separately?
+
+            ### Server Side
+            - HTTP: Stateless
+            - Cookie: Can be changed by users
+
+            The choice: Session!
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Session (Cont.)
+
+            Fortunately, PHP has provided us a session implementation: $_SESSION
+
+            ```php
+            <?php
+            // Initialize Session
+            session_start();
+
+            if (isset($_SESSION['user_id'])) {
+                var_dump($_SESSION['user_id']);
+                unset($_SESSION['temp']); // Delete temp from session
+            } else {
+                $_SESSION['user_id'] = 1; // Store user_id in session
+                $_SESSION['temp'] = 1; // Store temp in session
+                echo 'You are now logged in.';
+            }
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Reference
+
+            In PHP, variables are passed by value or reference.
+
+            All the variables (including array) except objects are passed by value by default.
+
+            ```php
+            <?php
+            $a = 1;
+            $b = $a;
+            $b = 2;
+            var_dump($a); // 1
+            $c =& $a;
+            $c = 2;
+            var_dump($a); // 2
+
+            $arr1 = [1, 2, 3];
+            $arr2 = $arr1;
+            $arr2[0] = 4;
+            var_dump($arr1); // [1,2,3]
+            $arr3 =& $arr1;
+            $arr3[0] = 4;
+            var_dump($arr1); // [4,2,3]
+
+            $obj = new StdClass();
+            $obj->a = 'foo';
+            $obj2 = $obj;
+            $obj2->a = 'foo2';
+            var_dump($obj->a); // foo2
+            $obj3 =& $obj;
+            $obj3->a = 'foo3';
+            var_dump($obj->a); // foo3
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Reference (Cont.)
+
+            Pay attention to the situation in "foreach"
+
+            ```php
+            <?php
+            $arr = [1, 2, 3, 4];
+            foreach ($arr as $val) {
+                $val += 1;
+            }
+            var_dump($arr); // [1,2,3,4]
+
+            foreach ($arr as &$val2) {
+                $val2 += 1;
+            }
+            var_dump($arr); // [2,3,4,5]
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Redirect
+
+            Add "Location" header to tell the browser to redirect to other pages
+
+            ```php
+            <?php
+            header('Location: cart.php');
+            ```
+          </script>
+        </section>
+        <section id="ass2" data-markdown>
+          <script type="text/template">
+            ## Assignment (II)
+
+            The output of the following code looks strange. Try to figure out why.
+
+            ```php
+            <?php
+            $array = ['a', 'b', 'c', 'd'];
+            $array2 = [1, 2, 3, 4];
+            foreach ($array as &$item) {
+                echo $item . PHP_EOL;
+            }
+
+            foreach ($array2 as $item) {
+                echo $item . PHP_EOL;
+            }
+
+            echo implode($array, ',') . PHP_EOL;    // Outputs a,b,c,4
+            echo implode($array2, ',') . PHP_EOL;   // Outputs 1,2,3,4
+            ?>
+            ```
+          </script>
+        </section>
+        <section id="ass3" data-markdown>
+          <script type="text/template">
+            ## Assignment (III)
+
+            - Implement simple login logic
+            - 4 files needed: index.php, private.php, login.php, logout.php
+            - Only a user who has logged in has access to private.php
+            - Use Session to finish this assignment
+          </script>
+        </section>
+      </section>
+      <section id="v4">
+        <section>
+          <h2>Next Challenge</h2>
+          <ul>
+            <li class="fragment">Naive Style</li>
+            <li class="fragment">Procedure Style</li>
+            <li class="fragment">Functional Style</li>
+            <li class="fragment"><strong>Object Style</strong></li>
+            <li class="fragment text-muted">Meta Style</li>
+          </ul>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Class
+
+            ### Java-like Syntax
+            ```php
+            <?php
+
+            class Person
+            {
+                public $name;
+                protected $age;
+
+                public function __construct($name, $age)
+                {
+                    $this->name = $name;
+                    $this->age = $age;
+                }
+
+                protected function growUp()
+                {
+                    echo 'Grow Up!';
+                    $this->age++;
+
+                }
+
+                public function getAgeAfterGrowUp()
+                {
+                    $this->growUp();
+                    return $this->age;
+                }
+            }
+
+            $person = new Person('at15', 18);
+            $person->growUp(); // Error: No access to protected method
+            echo $person->getAgeAfterGrowUp(); // 20
+            ```
+          </script>
+        </section>
+        <section>
+          <h2>Inheritance</h2>
+          <pre><code class="php" data-trim>
+&lt;?php
+
+class Girl extends Person
+{
+    private $isMarried = false;
+
+    public function __construct($name, $age, $isMarried = false)
+    {
+        parent::__construct($name, $age);
+        $this->isMarried = $isMarried;
+    }
+
+    public function getAgeAfterGrowUp()
+    {
+        $age = parent::getAgeAfterGrowUp();
+        if ($age >= 30) {
+            $this->isMarried = true;
+        }
+
+        return $age;
+    }
+
+    public function fromSJTU()
+    {
+        return $this->age >= 18 &amp;&amp; !$this->isMarried;
+    }
+}
+
+$girl = new Girl('ayi', 20, false);
+var_dump($girl->getAgeAfterGrowUp()); // OK, 21
+var_dump($girl->fromSJTU()); // true
+</code></pre>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Namespace
+
+            ```php
+            <?php
+            /* src/Dy/Web/Member.php */
+
+            namespace Dy\Web;
+
+            class Member extends Person
+            {
+                //....
+            }
+            
+            ```
+
+            ```php
+            <?php
+            /* src/test.php */
+
+            // Load class file
+            require_once __DIR__ . '/Dy/Web/Member.php';
+
+            // Specify the complete class name
+            $arrowrowe = new \Dy\Web\Member('arrowrowe', 18);
+
+            // Declare class to use
+            use Dy\Web\Member;
+
+            $at15 = new Member('at15', 18);
+
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Standards Recommendations
+
+            http://www.php-fig.org/psr/
+
+            - PSR-0: Autoloading Standard (Old)
+            - PSR-1: Basic Coding Standard
+            - PSR-2: Coding Style Guide
+            - PSR-4: Autoloading Standard
+            - PSR-3, PSR-6, PSR-7, ...
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PSR-4
+
+            http://www.php-fig.org/psr/psr-4/
+
+            Class autoloading standard
+
+            ```php
+            <?php
+            /* src/test.php */
+
+            // Load autoload component from Composer
+            require_once __DIR__ . '/vendor/autoload.php';
+
+            // Declare class to use
+            use Dy\Web\Member;
+
+            // ...
+
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Composer
+
+            Dependency Manager for PHP (like NPM)
+
+            ### composer.json
+
+            ```json
+            {
+              "name": "dyGroup",
+              "private":true,
+              "require":{
+                "monolog/monolog":"1.12.0",
+                "dyweb/bm-fu":"dev-master"
+              },
+              "require-dev":{
+                "phpunit/phpunit":"4.4.4"
+              },
+              "autoload": {
+                "psr-4":{
+                  "Dy\\":"src"
+                }
+              }
+            }
+            ```
+          </script>
+        </section>
+        <section>
+          <h2>Using OOP</h2>
+          <p>We have wrapped the cart into a component class in V4.</p>
+          <p>v4/src/Dy/Component/Cart.php</p>
+          <pre><code class="php" data-trim>
+&lt;?php
+namespace Dy\Component;
+
+/**
+ * Class Cart
+ * Simple Cart Component
+ *
+ * @package Dy\Component\Cart
+ * @author ComMouse
+ */
+class Cart
+{
+    /**
+     * Key of cart in $_SESSION
+     * @var string
+     */
+    private $cartKey;
+
+    /**
+     * Constructor of the class.
+     * This method will be called once an new instance is initialized.
+     *
+     * @param string $cartKey Key of cart in $_SESSION
+     */
+    public function __construct($cartKey = 'cart')
+    {
+        $this->cartKey = $cartKey;
+        session_start();
+    }
+
+    /**
+     * Get the cart from user session.
+     * @return array
+     */
+    public function getItems() {
+        // Create a new cart if no cart available
+        if (!isset($_SESSION[$this->cartKey])) {
+            $this->createCart();
+        }
+
+        // Return the cart fetched from user session
+        return $_SESSION[$this->cartKey];
+    }
+
+    /**
+     * Set the quantity of the given item in the cart.
+     * @param string    $itemName
+     * @param int       $quantity   If $quantity <= 0, the item will be removed from the cart.
+     */
+    public function setItemQuantity($itemName, $quantity) {
+        if ($quantity <= 0) {
+            $this->removeItem($itemName);
+            return;
+        }
+
+        foreach ($_SESSION[$this->cartKey] as &$item) {
+            if ($item['name'] === $itemName) {
+                $item['quantity'] = $quantity;
+                return;
+            }
+        }
+
+        // If the item is not found, add it into the cart
+        $this->addItem($itemName);
+    }
+
+    /**
+     * Get the given item in the cart specified by item name.
+     * @param  string       $itemName
+     * @return array|null   If the item is not found, null will be returned.
+     */
+    public function getItem($itemName) {
+        foreach ($_SESSION[$this->cartKey] as $item) {
+            if ($item['name'] === $itemName) {
+                return $itemName;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Add a new item into the cart.
+     * @param string $itemName
+     */
+    public function addItem($itemName) {
+        if ($this->getItem($itemName) !== null) {
+            return;
+        }
+
+        $_SESSION[$this->cartKey][] = [
+            'name' => (string) $itemName,
+            'quantity' => 1
+        ];
+    }
+
+    /**
+     * Remove an item from the cart.
+     * @param string $itemName
+     */
+    public function removeItem($itemName) {
+        foreach ($_SESSION[$this->cartKey] as $i => $item) {
+            if ($item['name'] === $itemName) {
+                unset($_SESSION[$this->cartKey][$i]);
+                return;
+            }
+        }
+    }
+
+    /**
+     * Create an example cart.
+     */
+    private function createCart()
+    {
+        $_SESSION['cart'] = [
+            ['name' => 'Area A Ticket', 'quantity' => 1],
+            ['name' => 'Area B Ticket', 'quantity' => 2],
+            ['name' => 'Area C Ticket', 'quantity' => 3],
+            ['name' => 'Area D Ticket', 'quantity' => 4]
+        ];
+    }
+}
+  </code></pre>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## View
+
+            Split the logic part & the display part
+
+            cart.php
+            ```php
+            <?php
+            // Load class loader
+            require_once 'include/autoload.php';
+
+            // Declare the component to use
+            use Dy\Component\Cart;
+
+            // Create a Cart instance
+            $cart = new Cart();
+
+            // Render content in view/cart.php
+            include 'view/cart.php';
+            ```
+          </script>
+        </section>
+        <section>
+          <h2>View (Cont.)</h2>
+
+          <p>Split the logic part & the display part</p>
+
+          <p>view/cart.php</p>
+          <pre><code class="php" data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title>My Cart&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1>My Cart&lt;/h1&gt;
+    &lt;p&gt;Here is your cart.&lt;/p&gt;
+
+    &lt;!-- Cart Info --&gt;
+    &lt;form method="POST" action="save_cart.php"&gt;
+        &lt;ul&gt;
+        &lt;?php foreach ($cart-&gt;getItems() as $i =&gt; $item): ?&gt;
+            &lt;li&gt;Name: &lt;?= $item['name'] ?&gt;&lt;/li&gt;
+            &lt;li&gt;Quantity:
+                &lt;input name="&lt;?= "quantity[{$item['name']}]" ?&gt;"
+                    type="number"
+                    value="&lt;?= $item['quantity'] ?&gt;"&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="&lt;?= 'remove_item.php?name=' . rawurlencode($item['name']) ?&gt;"&gt;Remove&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;?php endforeach; ?&gt;
+        &lt;/ul&gt;
+        &lt;button&gt;Save&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;!-- Add Item Form --&gt;
+    &lt;form method="POST" action="add_item.php"&gt;
+        &lt;h3&gt;Add new item&lt;/h3&gt;
+        &lt;p&gt;
+            &lt;label&gt;Name&lt;/label&gt;
+            &lt;input name="name" placeholder="Name"&gt;
+            &lt;button&gt;Add&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## File Structure
+
+            Our Improved Cart
+
+            - v4/add_item.php
+            - v4/remove_item.php
+            - v4/save_cart.php
+            - v4/cart.php
+            - v4/include/autoload.php
+            - v4/view/cart.php
+            - v4/src/Dy/Component/Cart.php
+          </script>
+        </section>
+        <section id="ass4" data-markdown>
+          <script type="text/template">
+            ## Assignment (IV)
+
+            Event Registering Site
+
+            - You need to use implement:
+                - Event List
+                - Event Registration CRUD
+                    - Register an event
+                    - Modify registering info
+                    - Exit an event
+                    - Get all the registrations
+                - Login is not needed
+                  - You can implement it anyway
+                - Keep data in disk files
+                  - No database is needed
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Assignment (IV) (Cont.)
+
+            Event Registering Site
+
+            - You need to split components, logic & views
+                - aka. MVC in later lectures
+            - Suggested structure
+                - register.php
+                - event.php
+                - libraries/functions.php
+                - libraries/Event.php
+                - libraries/File.php
+                - views/register_xxxx.php, views/register_yyyy.php
+                - views/event_xxxx.php, views/event_yyyy.php
+          </script>
+        </section>
+      </section>
+      <section id="assignment">
+        <section>
+          <h2>Assignment</h2>
+          <ul>
+            <li><a href="#/ass1">To-do List</a></li>
+            <li><a href="#/ass2">Reference Practice</a></li>
+            <li><a href="#/ass3">Simple Login</a></li>
+            <li><a href="#/ass4">Event Registering Site</a></li>
+          </ul>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Too much...
+
+            - Web Group Members: Choose 2 of them to finish
+            - Others: Choose at ease
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## How to handle?
+
+            - Email: web@dongyue.io
+            - GitHub:
+              1. Open a new repository
+              2. Open an issue [here](https://github.com/dyweb/course/issues) and give us your repository link
+            - QQ, Wechat is also OK!
+
+
+            - Deadline: May 2nd
+            - Answers available in the next week
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Reading Materials
+
+            - [Codecademy](https://codecademy.com) PHP Tutorial
+            - [*PHP and MySQL Web Development (4th edition)*](https://book.douban.com/subject/2118632/)
+            - [慕课网 PHP 入门篇](http://www.imooc.com/view/54)
+            - [慕课网 PHP 进阶篇](http://www.imooc.com/view/26)
+            - [PHP Manual](http://www.php.net/manual)
+
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Q & A
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Thank you for your listening!
+          </script>
+        </section>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+  <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        {
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+          condition: function () {
+            return !document.body.classList;
+          }
+        },
+        {
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+          condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+          condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+          async: true,
+          callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        },
+        {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js', async: true},
+        {src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js', async: true}
+      ]
+    });
+  </script>
+</body>
+</html>
