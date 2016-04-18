@@ -38,7 +38,7 @@
             - `===`, `<=>` (PHP 7 only)
             - `??` operator (PHP 7 only)
             - `is_xxx()`, `xxxval()`, `trim`
-            - `filter_input()`, `preg_match()` (Leave it in a homework)
+            - `filter_var()`, `preg_match()` (Leave it in a homework)
             - `isset`
     - Store & Read Data
         - `@` operator

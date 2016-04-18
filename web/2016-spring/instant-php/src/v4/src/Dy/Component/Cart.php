@@ -33,7 +33,8 @@ class Cart
      * Get the cart from user session.
      * @return array
      */
-    public function getItems() {
+    public function getItems()
+    {
         // Create a new cart if no cart available
         if (!isset($_SESSION[$this->cartKey])) {
             $this->createCart();
@@ -49,7 +50,8 @@ class Cart
      * @param int       $quantity   If $quantity <= 0, the item will be
      *                              removed from the cart.
      */
-    public function setItemQuantity($itemName, $quantity) {
+    public function setItemQuantity($itemName, $quantity)
+    {
         if ($quantity <= 0) {                               // If the quantity of the item is not positive
             $this->removeItem($itemName);                   // Remove the item directly
             return;                                         // Exit function handling
@@ -71,7 +73,8 @@ class Cart
      * @param  string       $itemName
      * @return array|null   If the item is not found, null will be returned.
      */
-    public function getItem($itemName) {
+    public function getItem($itemName)
+    {
         foreach ($_SESSION[$this->cartKey] as $item) {
             if ($item['name'] === $itemName) {
                 return $itemName;                           // Return the item when found
@@ -85,7 +88,8 @@ class Cart
      * Add a new item into the cart.
      * @param string $itemName
      */
-    public function addItem($itemName) {
+    public function addItem($itemName)
+    {
         if ($this->getItem($itemName) !== null) {           // If the item exists in the cart
             return;                                         // Exit function handling
         }
@@ -100,7 +104,8 @@ class Cart
      * Remove an item from the cart.
      * @param string $itemName
      */
-    public function removeItem($itemName) {
+    public function removeItem($itemName)
+    {
         foreach ($_SESSION[$this->cartKey] as $i => $item) {
             if ($item['name'] === $itemName) {
                 unset($_SESSION[$this->cartKey][$i]);       // Remove the item from the cart
