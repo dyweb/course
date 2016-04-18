@@ -661,6 +661,20 @@ php -S localhost:8000 -t ./src/
         </section>
         <section data-markdown>
           <script type="text/template">
+            ## PHP Variables (Cont.)
+
+            ```php
+            <?php
+
+            $a = 1;
+            $var = 'a';
+            echo $$var; // 1
+            ?>
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
             ## PHP Comments
 
             ```php
@@ -794,6 +808,7 @@ php -S localhost:8000 -t ./src/
             How to make outputted data beautiful?
 
             ```php
+            <?php
             // at15 is 0100 years old.
             echo sprintf('%s is %03d years old.', 'at15', 100);
 
@@ -807,6 +822,7 @@ php -S localhost:8000 -t ./src/
 
             // 3,000.00
             echo number_format(3000, 2);
+            ?>
             ```
           </script>
         </section>
@@ -820,11 +836,12 @@ php -S localhost:8000 -t ./src/
             $a = '';
             var_dump(empty($a));        // true
             var_dump(empty(false));     // true
-            var_dump(empty('false'));   // true
+            var_dump(empty('false'));   // false
             var_dump(empty(0));         // true
             var_dump(empty('0'));       // true
             var_dump(empty(' '));       // false
-            var_dump(empty(trim(' '));  // true
+            var_dump(empty(trim(' '))); // true
+            var_dump(empty([]));        // true
             ?>
             ```
           </script>
@@ -842,7 +859,7 @@ php -S localhost:8000 -t ./src/
       </section>
       <section id="v2">
         <section>
-          <h3>What's next?</h3>
+          <h2>What's next?</h2>
           <p>Make the code more complex :)</p>
           <a href="http://www.zhihu.com/question/35992354/answer/66488394">How to write unmaintainable PHP code?</a>
         </section>
@@ -990,7 +1007,8 @@ php -S localhost:8000 -t ./src/
             ```php
             <?php
             $a = ['a', 'b', 1];
-            var_dump(count($a));             // 3
+            $b = array('a', 'b', 1);  // Equivalent
+            var_dump(count($a));      // length: 3
             var_dump(implode(',', $a));      // a,b,1
             var_dump(join(',', $a));         // a,b,1
             var_dump(explode(',', 'a,b,c')); // [a, b, c]
@@ -999,7 +1017,9 @@ php -S localhost:8000 -t ./src/
             var_dump($a); // [a,b,1,1]
             $a[] = 2;
             var_dump($a); // [a,b,1,1,2]
+
             var_dump(in_array(2, $a); // true
+
             unset($a[4]); // Remove 2 from $a
             var_dump($a); // [a,b,1,1]
             ```
@@ -1190,9 +1210,9 @@ php -S localhost:8000 -t ./src/
             We have conquered the second version!
           </script>
         </section>
-        <section data-markdown>
+        <section id="ass1" data-markdown>
           <script type="text/template">
-            ## Assignments (I)
+            ## Assignment (I)
 
             Finish a simple To-do List application
             - Only one file "todo.php" is enough
@@ -1329,12 +1349,14 @@ php -S localhost:8000 -t ./src/
             ## Constants
 
             ```php
+            <?php
             define('MY_SITE', 1); // OK
 
             const MY_SITE2 = 1;   // OK
 
             $a = MY_SITE;
             var_dump(defined('MY_SITE'));  // true
+            var_dump(defined('MY_SITE2')); // true
             ```
           </script>
         </section>
@@ -1405,13 +1427,47 @@ php -S localhost:8000 -t ./src/
         </section>
         <section data-markdown>
           <script type="text/template">
+            ## Anonymous Function
+
+            ```php
+            <?php
+            function foo($func) {
+                $func(1);
+            }
+
+            // Lambda
+            foo(function ($str) {
+                echo $str . '<br>';
+            });
+
+            $arr = ['a', 'b', 'c', 'd'];
+            // Closure
+            foo(function ($index) use ($arr) {
+                echo $arr[$index] . '<br>';
+            });
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
             ## Session
 
             How to keep the data of each user separately?
 
-            - HTTP: Stateless
+            ### Client Side
             - Cookie: 4 KB Limit
             - LocalStorage: Not using the best programming language
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Session (Cont.)
+
+            How to keep the data of each user separately?
+
+            ### Server Side
+            - HTTP: Stateless
+            - Cookie: Can be changed by users
 
             The choice: Session!
           </script>
@@ -1508,7 +1564,7 @@ php -S localhost:8000 -t ./src/
             ```
           </script>
         </section>
-        <section data-markdown>
+        <section id="ass2" data-markdown>
           <script type="text/template">
             ## Assignment (II)
 
@@ -1532,7 +1588,7 @@ php -S localhost:8000 -t ./src/
             ```
           </script>
         </section>
-        <section data-markdown>
+        <section id="ass3" data-markdown>
           <script type="text/template">
             ## Assignment (III)
 
@@ -1544,10 +1600,498 @@ php -S localhost:8000 -t ./src/
         </section>
       </section>
       <section id="v4">
+        <section>
+          <h2>Next Challenge</h2>
+          <ul>
+            <li class="fragment">Naive Style</li>
+            <li class="fragment">Procedure Style</li>
+            <li class="fragment">Functional Style</li>
+            <li class="fragment"><strong>Object Style</strong></li>
+            <li class="fragment text-muted">Meta Style</li>
+          </ul>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Class
 
+            ### Java-like Syntax
+            ```php
+            <?php
+
+            class Person
+            {
+                public $name;
+                protected $age;
+
+                public function __construct($name, $age)
+                {
+                    $this->name = $name;
+                    $this->age = $age;
+                }
+
+                protected function growUp()
+                {
+                    echo 'Grow Up!';
+                    $this->age++;
+
+                }
+
+                public function getAgeAfterGrowUp()
+                {
+                    $this->growUp();
+                    return $this->age;
+                }
+            }
+
+            $person = new Person('at15', 18);
+            $person->growUp(); // Error: No access to protected method
+            echo $person->getAgeAfterGrowUp(); // 20
+            ```
+          </script>
+        </section>
+        <section>
+          <h2>Inheritance</h2>
+          <pre><code class="php" data-trim>
+&lt;?php
+
+class Girl extends Person
+{
+    private $isMarried = false;
+
+    public function __construct($name, $age, $isMarried = false)
+    {
+        parent::__construct($name, $age);
+        $this->isMarried = $isMarried;
+    }
+
+    public function getAgeAfterGrowUp()
+    {
+        $age = parent::getAgeAfterGrowUp();
+        if ($age >= 30) {
+            $this->isMarried = true;
+        }
+
+        return $age;
+    }
+
+    public function fromSJTU()
+    {
+        return $this->age >= 18 &amp;&amp; !$this->isMarried;
+    }
+}
+
+$girl = new Girl('ayi', 20, false);
+var_dump($girl->getAgeAfterGrowUp()); // OK, 21
+var_dump($girl->fromSJTU()); // true
+</code></pre>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Namespace
+
+            ```php
+            <?php
+            /* src/Dy/Web/Member.php */
+
+            namespace Dy\Web;
+
+            class Member extends Person
+            {
+                //....
+            }
+            
+            ```
+
+            ```php
+            <?php
+            /* src/test.php */
+
+            // Load class file
+            require_once __DIR__ . '/Dy/Web/Member.php';
+
+            // Specify the complete class name
+            $arrowrowe = new \Dy\Web\Member('arrowrowe', 18);
+
+            // Declare class to use
+            use Dy\Web\Member;
+
+            $at15 = new Member('at15', 18);
+
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PHP Standards Recommendations
+
+            http://www.php-fig.org/psr/
+
+            - PSR-0: Autoloading Standard (Old)
+            - PSR-1: Basic Coding Standard
+            - PSR-2: Coding Style Guide
+            - PSR-4: Autoloading Standard
+            - PSR-3, PSR-6, PSR-7, ...
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## PSR-4
+
+            http://www.php-fig.org/psr/psr-4/
+
+            Class autoloading standard
+
+            ```php
+            <?php
+            /* src/test.php */
+
+            // Load autoload component from Composer
+            require_once __DIR__ . '/vendor/autoload.php';
+
+            // Declare class to use
+            use Dy\Web\Member;
+
+            // ...
+
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Composer
+
+            Dependency Manager for PHP (like NPM)
+
+            ### composer.json
+
+            ```json
+            {
+              "name": "dyGroup",
+              "private":true,
+              "require":{
+                "monolog/monolog":"1.12.0",
+                "dyweb/bm-fu":"dev-master"
+              },
+              "require-dev":{
+                "phpunit/phpunit":"4.4.4"
+              },
+              "autoload": {
+                "psr-4":{
+                  "Dy\\":"src"
+                }
+              }
+            }
+            ```
+          </script>
+        </section>
+        <section>
+          <h2>Using OOP</h2>
+          <p>We have wrapped the cart into a component class in V4.</p>
+          <p>v4/src/Dy/Component/Cart.php</p>
+          <pre><code class="php" data-trim>
+&lt;?php
+namespace Dy\Component;
+
+/**
+ * Class Cart
+ * Simple Cart Component
+ *
+ * @package Dy\Component\Cart
+ * @author ComMouse
+ */
+class Cart
+{
+    /**
+     * Key of cart in $_SESSION
+     * @var string
+     */
+    private $cartKey;
+
+    /**
+     * Constructor of the class.
+     * This method will be called once an new instance is initialized.
+     *
+     * @param string $cartKey Key of cart in $_SESSION
+     */
+    public function __construct($cartKey = 'cart')
+    {
+        $this->cartKey = $cartKey;
+        session_start();
+    }
+
+    /**
+     * Get the cart from user session.
+     * @return array
+     */
+    public function getItems() {
+        // Create a new cart if no cart available
+        if (!isset($_SESSION[$this->cartKey])) {
+            $this->createCart();
+        }
+
+        // Return the cart fetched from user session
+        return $_SESSION[$this->cartKey];
+    }
+
+    /**
+     * Set the quantity of the given item in the cart.
+     * @param string    $itemName
+     * @param int       $quantity   If $quantity <= 0, the item will be removed from the cart.
+     */
+    public function setItemQuantity($itemName, $quantity) {
+        if ($quantity <= 0) {
+            $this->removeItem($itemName);
+            return;
+        }
+
+        foreach ($_SESSION[$this->cartKey] as &$item) {
+            if ($item['name'] === $itemName) {
+                $item['quantity'] = $quantity;
+                return;
+            }
+        }
+
+        // If the item is not found, add it into the cart
+        $this->addItem($itemName);
+    }
+
+    /**
+     * Get the given item in the cart specified by item name.
+     * @param  string       $itemName
+     * @return array|null   If the item is not found, null will be returned.
+     */
+    public function getItem($itemName) {
+        foreach ($_SESSION[$this->cartKey] as $item) {
+            if ($item['name'] === $itemName) {
+                return $itemName;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Add a new item into the cart.
+     * @param string $itemName
+     */
+    public function addItem($itemName) {
+        if ($this->getItem($itemName) !== null) {
+            return;
+        }
+
+        $_SESSION[$this->cartKey][] = [
+            'name' => (string) $itemName,
+            'quantity' => 1
+        ];
+    }
+
+    /**
+     * Remove an item from the cart.
+     * @param string $itemName
+     */
+    public function removeItem($itemName) {
+        foreach ($_SESSION[$this->cartKey] as $i => $item) {
+            if ($item['name'] === $itemName) {
+                unset($_SESSION[$this->cartKey][$i]);
+                return;
+            }
+        }
+    }
+
+    /**
+     * Create an example cart.
+     */
+    private function createCart()
+    {
+        $_SESSION['cart'] = [
+            ['name' => 'Area A Ticket', 'quantity' => 1],
+            ['name' => 'Area B Ticket', 'quantity' => 2],
+            ['name' => 'Area C Ticket', 'quantity' => 3],
+            ['name' => 'Area D Ticket', 'quantity' => 4]
+        ];
+    }
+}
+  </code></pre>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## View
+
+            Split the logic part & the display part
+
+            cart.php
+            ```php
+            <?php
+            // Load class loader
+            require_once 'include/autoload.php';
+
+            // Declare the component to use
+            use Dy\Component\Cart;
+
+            // Create a Cart instance
+            $cart = new Cart();
+
+            // Render content in view/cart.php
+            include 'view/cart.php';
+            ```
+          </script>
+        </section>
+        <section>
+          <h2>View (Cont.)</h2>
+
+          <p>Split the logic part & the display part</p>
+
+          <p>view/cart.php</p>
+          <pre><code class="php" data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title>My Cart&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1>My Cart&lt;/h1&gt;
+    &lt;p&gt;Here is your cart.&lt;/p&gt;
+
+    &lt;!-- Cart Info --&gt;
+    &lt;form method="POST" action="save_cart.php"&gt;
+        &lt;ul&gt;
+        &lt;?php foreach ($cart-&gt;getItems() as $i =&gt; $item): ?&gt;
+            &lt;li&gt;Name: &lt;?= $item['name'] ?&gt;&lt;/li&gt;
+            &lt;li&gt;Quantity:
+                &lt;input name="&lt;?= "quantity[{$item['name']}]" ?&gt;"
+                    type="number"
+                    value="&lt;?= $item['quantity'] ?&gt;"&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="&lt;?= 'remove_item.php?name=' . rawurlencode($item['name']) ?&gt;"&gt;Remove&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;?php endforeach; ?&gt;
+        &lt;/ul&gt;
+        &lt;button&gt;Save&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;!-- Add Item Form --&gt;
+    &lt;form method="POST" action="add_item.php"&gt;
+        &lt;h3&gt;Add new item&lt;/h3&gt;
+        &lt;p&gt;
+            &lt;label&gt;Name&lt;/label&gt;
+            &lt;input name="name" placeholder="Name"&gt;
+            &lt;button&gt;Add&lt;/button&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## File Structure
+
+            Our Improved Cart
+
+            - v4/add_item.php
+            - v4/remove_item.php
+            - v4/save_cart.php
+            - v4/cart.php
+            - v4/include/autoload.php
+            - v4/view/cart.php
+            - v4/src/Dy/Component/Cart.php
+          </script>
+        </section>
+        <section id="ass4" data-markdown>
+          <script type="text/template">
+            ## Assignment (IV)
+
+            Event Registering Site
+
+            - You need to use implement:
+                - Event List
+                - Event Registration CRUD
+                    - Register an event
+                    - Modify registering info
+                    - Exit an event
+                    - Get all the registrations
+                - Login is not needed
+                  - You can implement it anyway
+                - Keep data in disk files
+                  - No database is needed
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Assignment (IV) (Cont.)
+
+            Event Registering Site
+
+            - You need to split components, logic & views
+                - aka. MVC in later lectures
+            - Suggested structure
+                - register.php
+                - event.php
+                - libraries/functions.php
+                - libraries/Event.php
+                - libraries/File.php
+                - views/register_xxxx.php, views/register_yyyy.php
+                - views/event_xxxx.php, views/event_yyyy.php
+          </script>
+        </section>
       </section>
       <section id="assignment">
-        <h2>Q</h2>
+        <section>
+          <h2>Assignment</h2>
+          <ul>
+            <li><a href="#/ass1">To-do List</a></li>
+            <li><a href="#/ass2">Reference Practice</a></li>
+            <li><a href="#/ass3">Simple Login</a></li>
+            <li><a href="#/ass4">Event Registering Site</a></li>
+          </ul>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Too much...
+
+            - Web Group Members: Choose 2 of them to finish
+            - Others: Choose at ease
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## How to handle?
+
+            - Email: web@dongyue.io
+            - GitHub:
+              1. Open a new repository
+              2. Open an issue [here](https://github.com/dyweb/course/issues) and give us your repository link
+            - QQ, Wechat is also OK!
+
+
+            - Deadline: May 2nd
+            - Answers available in the next week
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Reading Materials
+
+            - [Codecademy](https://codecademy.com) PHP Tutorial
+            - [*PHP and MySQL Web Development (4th edition)*](https://book.douban.com/subject/2118632/)
+            - [慕课网 PHP 入门篇](http://www.imooc.com/view/54)
+            - [慕课网 PHP 进阶篇](http://www.imooc.com/view/26)
+            - [PHP Manual](http://www.php.net/manual)
+
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Q & A
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Thank you for your listening!
+          </script>
+        </section>
       </section>
     </div>
   </div>
