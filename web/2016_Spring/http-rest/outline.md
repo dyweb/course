@@ -1,0 +1,28 @@
+## HTTP & RESTful API
+
+- What happened entering a website
+  - https://github.com/alex/what-happens-when
+  - DNS: server_name -> ip
+  - Request this page from that ip
+    - Request Structure: Header (Cookies, Referer, UA, ...), Body
+  - Server receives the request from a certain port
+  - Web server handles this request
+    - Static files
+    - Dynamic, CGI (Nginx), to php interpreter
+      - Interpreter reads the php file, evals it, get response back to Nginx
+  - Response returns to browser
+  - Browser parses HTML, render
+  - Request external resources
+  - Run JavaScript
+- URL / URI
+  - protocol, http, https, ftp, ...
+  - server name of ip
+  - port
+  - path
+  - query string
+  - hash
+- HTTP Status Code
+  - 200, 301, 302, 304, 401, 403, 404, 500, 502, 503
+- HTTP Verb
+  - get, post, delete, put, patch, option, head
+- RESTful API
