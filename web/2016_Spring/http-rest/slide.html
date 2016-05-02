@@ -104,11 +104,192 @@
         <section>
           <h2>Request/Response</h2>
           <p>How can we get access to pages?</p>
+          <img src="images/part1/http1-request-response.png">
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Request/Response
+
+            1. Type an address and enter
+            2. The browser sends a request to a server
+            3. The server gives back a response
+            4. The browser parse the response and render the page
+          </script>
+        </section>
+        <section>
+          <h2>How does it work?</h2>
+          <br>
+          <h1 class="fragment">HTTP</h1>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Where is HTTP?
+
+            - Application Layer
+
+            ![OSI model](images/part1/osi-model.jpg)
+
+            - Uses 80 port by default
+            - Stateless protocol
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Where is the server?
+
+            - Server IP address
+            - Returned from DNS server
+
+            ![DNS](images/part1/how-dns-works.jpg)
+
+            - *System `hosts` file*
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Where is the server? (Cont.)
+
+            ![DNS](images/part1/dns-detail.png)
+
+            - *DNS Pollution*
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## How to observe HTTP?
+
+            - [Chrome DevTools](https://developer.chrome.com/devtools)
+            - [Fiddler](http://www.telerik.com/fiddler)
+            - [Wireshark](https://www.wireshark.org/)
+          </script>
         </section>
       </section>
       <section id="http">
-        <section>
-          <h2>HTTP Structure</h2>
+        <section data-markdown>
+          <script type="text/template">
+            ## HTTP Structure
+
+            - HTTP Version
+            - URI
+            - Verb
+            - Status Code
+            - Message Format
+            - Identification
+            - Authentication
+            - *Cache
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## HTTP Version
+
+            - HTTP/1.0
+              - Legacy Version
+            - HTTP/1.1
+              - Persistent Connection, Host, Cache, Chunked, ...
+            - [HTTP/2](https://http2.github.io/)
+              - Binary, Multiplexed, Server Push, SPDY, ...
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## URI
+
+            - URI (Uniform Resource Indentifier)
+              - URL (Uniform Resource __Locator__)
+                - `http://tongqu.me/act/type?page=1`
+                - Locator for resources
+              - URN (Uniform Resource __Name__)
+                - `urn:isbn:0451450523`
+              - ...
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## URL
+
+            ```
+            scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]
+            ```
+
+            - scheme: http, ftp, ...
+            - host: `tongqu.me`, `localhost`, `59.78.12.34`
+            - port: 80, 21, ...
+            - path: `index.php`, `act/1234`
+            - query: `?a=1&b=2`
+            - fragment: `#title-1`
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verb
+
+            - GET
+            - POST
+
+            - PUT
+            - PATCH
+            - DELETE
+
+            - HEAD
+            - OPTIONS
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verb (Cont.)
+
+            - POST Content Type
+              - application/x-www-form-urlencoded
+              - multipart/form-data
+              - application/json
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Status Code
+
+            - 1xx
+              - 100 Continue
+            - 2xx
+              - 200 OK
+              - 201 Created
+              - 202 Accepted
+              - 204 No Content
+          </script>
+          <section data-markdown>
+          <script type="text/template">
+            ## Status Code (Cont.)
+
+            - 3xx
+              - 301 Moved Permanently
+              - 302 Moved Temporarily (header Location)
+              - 304 Not Modified
+          </script>
+          <script type="text/template">
+            ## Status Code (Cont.)
+
+            - 4xx
+              - 400 Bad Request
+              - 401 Unauthorized
+              - 403 Forbidden
+              - 404 Not Found
+              - 405 Method Not Allowed
+              - 409 Conflict
+          </script>
+          <script type="text/template">
+            ## Status Code (Cont.)
+
+            - 5xx
+              - 500 Internal Server Error
+              - 501 Not Implemented
+              - 502 Bad Gateway
+              - 503 Service Unavailable
+          </script>
+          <script type="text/template">
+            ## Message Format
+            
+          </script>
         </section>
       </section>
       <section id="rest">
