@@ -442,7 +442,7 @@ Here is the content (compressed with gzip)...
             - Cache-Control
                 - no-cache
                 - max-age
-            - Expires (Deprecated)
+            - Expires (Old)
           </script>
         </section>
         <section data-markdown>
@@ -459,10 +459,346 @@ Here is the content (compressed with gzip)...
         <section>
           <h2>RESTful API</h2>
         </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## API?
+
+            - __A__pplication __P__rogramming __I__nterfacce
+            - Refers to __HTTP API__ in our topic
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Why API?
+
+            - To separate front-end & back-end
+            - Open to other developers
+            - Friendly to Mobile & Desktop Platforms
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Why REST?
+
+            ### REST?
+            - __REST__: __R__epresentational __S__tate __T__ransfer
+            - __RESTful API__: API following REST style
+
+            ### Why?
+            - Resource-based style
+            - Clear & easy to understand & extend
+            - Full use of HTTP protocol
+            - More & more developers are using!
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Why REST? (Cont.)
+
+            ### RESTful API
+            ```
+            GET /students/336/semaster/1/scores?page=1
+            ```
+            ```
+            DELETE /students/336/semaster/1/scores/5
+            ```
+
+            ### Compared with...
+            ```
+            GET /mod_student/student.php?action=get_student_socre&id=336&se_id=1&p=1
+            ```
+            ```
+            POST /student_score/delete_student_score
+            (The rest of the arguments are given in request body)
+            ```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## REST
+
+            - Resources: Entities (URI)
+            - Representation: JSON, XML, ...
+            - State Transfer: Interact with resources
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## REST (Cont.)
+
+            - State Transfer: Interact with resources
+                - __POST__ *__C__reate a resource*
+                - __GET__ *__R__etrieve a resource or a resource list*
+                - __PUT__ *__U__pdate a resource*
+                - __DELETE__ *__D__elete a resource*
+
+            Also called __CRUD__
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## How to use RESTful API?
+
+            - Follow the API doc
+            - Tool
+                - cURL
+                - [Postman](http://www.getpostman.com/)
+          </script>
+        </section>
       </section>
       <section id="design">
         <section>
           <h2>RESTful API Design</h2>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## URL
+
+            <img src="images/part4/url.png" style="background-color: white;">
+
+            *http://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177
+*
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Versioning
+
+            ### Strict Version
+```
+Accept: application/vnd.github.v3+json
+```
+            ### Ugly Version
+```
+https://api.example.com/v1/users/1
+http://www.example.com/api/v1/users/1
+```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Endpoints
+
+            - Uses plural nouns & no verbs
+            - Presents a resource or a collection
+
+```
+// Good:
+https://api.example.com/v1/zoos
+https://api.example.com/v1/animals
+https://api.example.com/v1/animal_types
+https://api.example.com/v1/employees
+
+// Not Good:
+https://api.example.com/v1/user         // Using a singluar word
+https://api.example.com/v1/register     // Using a verb
+```
+
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verbs
+
+            - `GET`:     *Retrieve*
+            - `POST`:    *Create*
+            - `PUT`:     *Update*
+            - `DELETE`:  *Delete*
+            
+            *(Not frequently used)*
+            - `PATCH`:       *Partially update*
+            - `OPTIONS`:     *Get the availables verbs for the resource*
+            - `HEAD`:        *Retrieve in header only*
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verbs (Cont.)
+
+            - Complete API of zoos
+
+```c
+GET /zoos        // List all Zoos (ID and Name, not too much detail)
+POST /zoos       // Create a new Zoo
+GET /zoos/:id    // Retrieve an entire Zoo object
+PUT /zoos/:id    // Update a Zoo (entire object)
+PATCH /zoos/:id  // Update a Zoo (partial object)
+DELETE /zoos/:id // Delete a Zoo
+```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verbs (Cont.)
+
+            ### Challenge
+
+            How about designing a verifying operation?
+
+```c
+PUT /users/:id/verification
+```
+```c
+POST /users/:id/verify
+```
+```c
+PATCH /users/:id // (with form data: "verified: true")
+```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verbs (Cont.)
+
+            ### Also...
+
+```c
+GET /searching_results/:keyword
+```
+```c
+GET /search?keyword=abc
+```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verbs (Cont.)
+
+            ### Another Challenge
+            Most servers disallows verbs except GET and POST out of security reasons
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verbs (Cont.)
+
+            ### Solution
+            
+            <p>1. Use POST to "create" a verb</p>
+
+```c
+POST /users/:id  // (with form data: "_method: DELETE")
+POST /users/:id  // (with form data: "_method: PATCH")
+```
+
+            *Many frameworks support this trick.*
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Verbs (Cont.)
+
+            ### Solution
+            
+            <p>2. Add a customized header to a POST request</p>
+
+```c
+X-HTTP-Method-Override: PUT
+```
+
+            *Many frameworks support this trick, too.*
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Filtering
+
+            Which is better?
+
+```c
+GET /users/page/:page_id
+GET /users?page=:page_id
+```
+
+```c
+POST /users/:id/verify  // (with form data: "role_id: :admin_role")
+POST /users/:id/verify?role_id=:admin_role
+```
+
+```c
+GET /employees?company_id=5&gender=male&page=1&per_page=10
+GET /companies/5/genders/male/employees?page=1&per_page=10
+```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Filtering (Cont.)
+
+            ### Query String
+
+            - Frequently used options
+
+```c
+?limit=10       // Number per page (for pagination)
+?offset=10      // Records skipped (for pagination)
+?page=1         // Page number (for pagination)
+?per_page=10    // Records per page (for pagination)
+?animal_type_id=1       // Filtering (WHERE animal_type_id = 1)
+?sortby=name&order=asc  // Sorting rules (ORDER BY name ASC)
+
+```
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Status Code
+
+            Use status code to return results
+
+            ![Status Code](images/part4/status-code.png)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Response Body
+
+            - `GET`:     *Object or an array of objects*
+            - `POST`:    *Created object*
+            - `PUT`:     *Updated object*
+            - `PATCH`:   *Updated object*
+            - `DELET`:   *Empty*
+
+            Content Type: JSON/XML/...
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Authentication
+
+            - HTTPS: Security
+            - JSON Web Token
+            - OAuth2
+
+            *Attention: Avoid using cookie*
+            - Only browsers have cookies
+            - API shoule be designed to be stateless
+
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Maintainence
+
+            - Don't forget to write api docs!
+            - Tests
+                - Unit Test
+                - Functional Test
+                - Acceptance Test
+                - continuous intergations (CI)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Framework Support
+
+            - Most frameworks support routes with verbs
+                - Ruby: Ruby on Rails
+                - PHP: Laravel, Slim, CodeIgniter
+                - Python: Django
+                - Node.js: Express.js
+            - And some support REST style with just one controller
+          </script>
         </section>
       </section>
       <section id="assignment">
@@ -475,11 +811,13 @@ Here is the content (compressed with gzip)...
 
             1. Learn to use Chrom DevTool & Fiddler to observe HTTP connections.
             2. Select a PHP microframework (Slim/Flight/...) and implement a simple REST service of a to-do list.
-              - `GET` /api/v1/tasks *(Get all tasks)*
-              - `GET` /api/v1/tasks/:id *(Get a task by id)*
-              - `POST` /api/v1/tasks *(Create a new task)*
-              - `PUT` /api/v1/tasks/:id *(Update a given task)*
-              - `DELETE` /api/v1/tasks/:id *(Delete a task)*
+            ```c
+            GET /api/v1/tasks        // Get all tasks
+            GET /api/v1/tasks/:id    // Get a task by id
+            POST /api/v1/tasks       // Create a new task
+            PUT /api/v1/tasks/:id    // Update a given task
+            DELETE /api/v1/tasks/:id // Delete a task
+            ```
             3. (Optional) Write a crawler for [Tongqu Act API](http://tongqu.me/api/act/type). Here is the [doc](https://github.com/dyweb/android-stuff/blob/master/interview/old/api.md) of this API.
           </script>
         </section>
@@ -532,7 +870,6 @@ Here is the content (compressed with gzip)...
             ### Tools
             - [Postman](http://www.getpostman.com/)
             - [Scrapy](http://scrapy.org/)
-
           </script>
         </section>
         <section data-markdown>
