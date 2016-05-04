@@ -11,9 +11,6 @@
   <meta name="viewport"
   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-  <!-- Bootstrap Theme -->
-  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
 
@@ -67,7 +64,7 @@
 <body>
   <div class="reveal">
     <div class="slides">
-      <section data-background="images/bg_kagari.jpg" style="background-color:rgba(0,0,0,0.4)">
+      <section data-background="images/bg_kagari.png" style="background-color:rgba(0,0,0,0.4)">
         <h2>HTTP &amp; RESTful API</h2>
         <h4>2016 Spring Dongyue Web Studio</h4>
         <p>
@@ -224,15 +221,9 @@
           <script type="text/template">
             ## Verb
 
-            - GET
-            - POST
-
-            - PUT
-            - PATCH
-            - DELETE
-
-            - HEAD
-            - OPTIONS
+            - GET, POST
+            - PUT, PATCH, DELETE
+            - HEAD, OPTIONS
           </script>
         </section>
         <section data-markdown>
@@ -257,7 +248,8 @@
               - 202 Accepted
               - 204 No Content
           </script>
-          <section data-markdown>
+        </section>
+        <section data-markdown>
           <script type="text/template">
             ## Status Code (Cont.)
 
@@ -266,6 +258,8 @@
               - 302 Moved Temporarily (header Location)
               - 304 Not Modified
           </script>
+        </section>
+        <section data-markdown>
           <script type="text/template">
             ## Status Code (Cont.)
 
@@ -277,6 +271,8 @@
               - 405 Method Not Allowed
               - 409 Conflict
           </script>
+        </section>
+        <section data-markdown>
           <script type="text/template">
             ## Status Code (Cont.)
 
@@ -286,9 +282,11 @@
               - 502 Bad Gateway
               - 503 Service Unavailable
           </script>
+        </section>
+        <section data-markdown>
           <script type="text/template">
             ## Message Format
-            
+
           </script>
         </section>
       </section>
