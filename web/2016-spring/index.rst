@@ -11,7 +11,7 @@ Contents:
    environment/index
    git-html/index
    instant-php/index
-   html-rest/index
+   http-rest/index
 
 `original schedule`_ is in dyweb/web-stuff repo.
 
