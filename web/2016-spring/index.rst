@@ -7,9 +7,12 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   
+
    environment/index
-   
+   git-html/index
+   instant-php/index
+   http-rest/index
+
 `original schedule`_ is in dyweb/web-stuff repo.
 
 .. _original schedule: https://github.com/dyweb/web-stuff/tree/master/lecture/web-2016-spring

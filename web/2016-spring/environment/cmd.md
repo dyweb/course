@@ -8,7 +8,7 @@ You type and run commands in plain text, and get text output. NO GUI (Graphic Us
 
 tl;dw
 
-## How to 
+## How to
 
 ### Open a command line
 
