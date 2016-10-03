@@ -52,3 +52,7 @@ how to use it.
 
 - windows config
 - linux config
+
+### Autocomplete
+
+use tab
