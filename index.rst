@@ -13,6 +13,7 @@ Contents:
 
    README
    web/index
+   mos/index
 
 Indices and tables
 ==================
